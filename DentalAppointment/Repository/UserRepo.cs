@@ -11,7 +11,7 @@ namespace DentalAppointment.Repository
 {
     public class UserRepo
     {
-        private AppointmentSysEnt db;
+        public AppointmentSysEnt db;
 
         public UserRepo() 
         {
@@ -26,7 +26,7 @@ namespace DentalAppointment.Repository
                 db.UserAccounts.Add(aUserAccount);
                 db.SaveChanges();
 
-                outMessage = "Inserted";
+                outMessage = "Account Created";
                 retValue = ErrorCode.Success;
             }
             catch (Exception ex)
@@ -46,24 +46,35 @@ namespace DentalAppointment.Repository
             {
                 // Find the user with id
                 UserAccount user = db.UserAccounts.Where(m => m.UserID == userId).FirstOrDefault();
-                // Update the value of the retrieved user
-                user.Username = aUserAccount.Username;
-                user.Password = aUserAccount.Password;
 
-                db.SaveChanges();       // Execute the update
+                if (user != null)
+                {
+                    // Update the value of the retrieved user
+                    user.Username = aUserAccount.Username;
+                    user.Password = aUserAccount.Password;
+                    user.ContactInfo = aUserAccount.ContactInfo;
+                    user.FirstName = aUserAccount.FirstName;
+                    user.LastName = aUserAccount.LastName;
+                    user.RoleID = aUserAccount.RoleID;
 
-                outMessage = "Updated";
-                retValue = ErrorCode.Success;
+                    db.SaveChanges(); // Execute the update
+
+                    outMessage = "Updated";
+                    retValue = ErrorCode.Success;
+                }
+                else
+                {
+                    outMessage = "User not found";
+                }
             }
             catch (Exception ex)
             {
                 outMessage = ex.Message;
-                retValue = ErrorCode.Success;
                 MessageBox.Show(ex.Message);
             }
             return retValue;
-
         }
+
 
         public ErrorCode RemoveUser(int? userId, ref String outMessage)
         {

@@ -20,10 +20,27 @@ namespace DentalAppointment
         {
             InitializeComponent();
 
-            Repos = new UserRepo(); 
+            Repos = new UserRepo();
         }
 
-        private void BTLogin_Click(object sender, EventArgs e)
+        private void Form_Login_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CkbShow.Checked)
+            {
+                TBPassword.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                TBPassword.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void BTLogin_Click_1(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(TBUsername.Text))
             {
@@ -75,38 +92,17 @@ namespace DentalAppointment
             }
         }
 
-        private void Form_Login_Load(object sender, EventArgs e)
+
+        private void TBPassword_TextChanged_2(object sender, EventArgs e)
         {
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void TBPassword_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            Form_Register frm = new Form_Register();
-            frm.ShowDialog();
-
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (CkbShow.Checked)
-            {
-                TBPassword.UseSystemPasswordChar = false;
-            }
-            else
-            {
-                TBPassword.UseSystemPasswordChar = true;
-            }
+          
         }
     }
 }
+
+

@@ -14,9 +14,9 @@ namespace DentalAppointment.Utils
 
         public enum Roles
         {
-            Patient = 1,
-            Dentist = 0,
-            Admin = 3,
+            Patient = 0,
+            Dentist = 1,
+            Admin = 2,
 
         }
         public class Constant

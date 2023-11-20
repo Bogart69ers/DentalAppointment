@@ -2,11 +2,14 @@ CREATE DATABASE AppointmentSys
 
 Use AppointmentSys
 
-create table Patient (
+create table PatientInfo (
 	PatientID int IDENTITY(1,1) PRIMARY KEY,
-	Name varchar(255),
+	FirstName varchar(255),
+	LastName varchar(255),
 	ContactInfo varchar(255),
-	InsuranceInfo Text
+	DateofBirth DATETIME,
+	Sex varchar(20),
+	AppointmentPurpose nvarchar(255)
 	);
 
 create table Dentist (
@@ -27,10 +30,11 @@ create table Appointment (
 
 Create table UserAccount ( 
 	UserID int IDENTITY(1,1) Primary Key,
+	FirstName varchar(50),
+	LastName varchar(50),
 	Username varchar(50),
 	Password varchar(255),
 	RoleID int,
-	Name varchar(255),
 	ContactInfo varchar(255)
 	);
 

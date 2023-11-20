@@ -14,15 +14,22 @@ namespace DentalAppointment.Forms
 {
     public partial class Form_Admin : Form
     {
+        public List<Role> listRole;
         UserRepo Repo;
         int? userSelectedId = null;
         public Form_Admin()
         {
             InitializeComponent();
+            listRole = new List<Role>();    
         }
 
         private void Form_Admin_Load(object sender, EventArgs e)
         {
+            loadCBRole();
+            // TODO: This line of code loads data into the 'dentalAppointmentDataSet.USER_INFORMATION' table. You can move, or remove it, as needed.
+            this.uSER_INFORMATIONTableAdapter.Fill(this.dentalAppointmentDataSet.USER_INFORMATION);
+            // TODO: This line of code loads data into the 'dentalAppointmentDataSet.USER_ACCOUNT' table. You can move, or remove it, as needed.
+            this.uSER_ACCOUNTTableAdapter.Fill(this.dentalAppointmentDataSet.USER_ACCOUNT);
             Repo = new UserRepo();
             loadUser();
         }
@@ -35,30 +42,55 @@ namespace DentalAppointment.Forms
         {
             String username = TBUser.Text;
             String pass = TBPass.Text;          
-            String Name = TBName.Text;
+            String FirstName = TBFName.Text;
+            String LastName = TBLName.Text;
+            String Role = CBRole.Text;
+            String Contact = TBContact.Text;
           
 
             String strOutputMsg = "";
             // Validation not allow empty or null value
           
 
-            if (String.IsNullOrEmpty(Name))
+            if (String.IsNullOrEmpty(FirstName))
             {
-                errorProvider1.SetError(TBName, "Empty Field!");
+                errorProvider1.SetError(TBFName, "Empty Field!");
                 return;
             }
-            else 
+            else
+
+             if (String.IsNullOrEmpty(LastName))
+            {
+                errorProvider2.SetError(TBLName, "Empty Field!");
+                return;
+            }
+            else
+
+            if (String.IsNullOrEmpty(Role))
+            {
+                errorProvider6.SetError(CBRole, "Empty Field!");
+                return;
+            }
+            
+            else
 
             if (String.IsNullOrEmpty(username))
             {
-                errorProvider1.SetError(TBUser, "Empty Field!");
+                errorProvider3.SetError(TBUser, "Empty Field!");
                 return;
             }
             else
             // Validation not allow empty or null value
             if (String.IsNullOrEmpty(pass))
             {
-                errorProvider1.SetError(TBPass, "Empty Field!");
+                errorProvider5.SetError(TBPass, "Empty Field!");
+                return;
+            }
+            else
+            // Validation not allow empty or null value
+            if (String.IsNullOrEmpty(Contact))
+            {
+                errorProvider4.SetError(TBContact, "Empty Field!");
                 return;
             }
 
@@ -69,7 +101,8 @@ namespace DentalAppointment.Forms
             newUserAcc.Password = TBPass.Text;
             newUserAcc.RoleID = CBRole.SelectedIndex;
             newUserAcc.ContactInfo = TBContact.Text;
-            newUserAcc.Name = TBName.Text; 
+            newUserAcc.FirstName = TBFName.Text; 
+            newUserAcc.LastName = TBLName.Text;
 
             ErrorCode retValue = Repo.NewUser(newUserAcc, ref strOutputMsg);
             if (retValue == ErrorCode.Success)
@@ -82,7 +115,8 @@ namespace DentalAppointment.Forms
                 TBPass.Clear();
                 TBUser.Clear();
                 TBContact.Clear();
-                TBName.Clear();
+                TBFName.Clear();
+                TBLName.Clear();
                 CBRole.ResetText();
                 
             }
@@ -105,6 +139,12 @@ namespace DentalAppointment.Forms
                 userSelectedId = (Int32)dgv_admin.Rows[e.RowIndex].Cells[0].Value;
                 TBUser.Text = dgv_admin.Rows[e.RowIndex].Cells[1].Value as String;
                 TBPass.Text = dgv_admin.Rows[e.RowIndex].Cells[2].Value as String;
+                TBFName.Text = dgv_admin.Rows[e.RowIndex].Cells[5].Value as String;
+                TBLName.Text = dgv_admin.Rows[e.RowIndex].Cells[6].Value as String;
+                TBContact.Text = dgv_admin.Rows[e.RowIndex].Cells[4].Value as String;
+                CBRole.Text = dgv_admin.Rows[e.RowIndex].Cells[3].Value as String;
+
+
             }
             catch (Exception ex)
             {
@@ -113,54 +153,71 @@ namespace DentalAppointment.Forms
         }
 
         private void BTUpdate_Click(object sender, EventArgs e)
+{
+    String username = TBUser.Text;
+    String pass = TBPass.Text;
+    String fname = TBFName.Text;
+    String lname = TBLName.Text;
+    String con = TBContact.Text;
+    int role = CBRole.SelectedIndex;
+
+
+    String strOutputMsg = "";
+
+    // Validation not allow empty or null value
+    if (String.IsNullOrEmpty(username) || String.IsNullOrEmpty(pass) || String.IsNullOrEmpty(fname)) 
+    {
+        errorProvider1.SetError(TBUser, "All fields must be filled!");
+        return;
+    }
+
+    var userAccount = Repo.GetUserByUsername(username);
+
+    if (userAccount != null)
+    {
+        // Update userAccount with new values
+        userAccount.Password = pass;
+        userAccount.FirstName = fname;
+        userAccount.LastName = lname;
+        userAccount.ContactInfo = con;
+        userAccount.RoleID = role;
+
+        ErrorCode retValue = Repo.UpdateUser(userSelectedId, userAccount, ref strOutputMsg);
+
+        if (retValue == ErrorCode.Success)
         {
-            String username = TBUser.Text;
-            String pass = TBPass.Text;
+            // Clear the errors
+            errorProvider1.Clear();
+            MessageBox.Show(strOutputMsg, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            loadUser();
+            // Reset the selected id
+            userSelectedId = null;
 
-            String strOutputMsg = "";
-            // Validation not allow empty or null value
-            if (String.IsNullOrEmpty(username))
-            {
-                errorProvider1.SetError(TBUser, "Empty Field!");
-                return;
-            }
-            else
-            // Validation not allow empty or null value
-            if (String.IsNullOrEmpty(pass))
-            {
-                errorProvider1.SetError(TBPass, "Empty Field!");
-                return;
-            }
-            var userAccount = Repo.GetUserByUsername(username);
-
-            ErrorCode retValue = Repo.UpdateUser(userSelectedId, userAccount, ref strOutputMsg);
-            if (retValue == ErrorCode.Success)
-            {
-                //Clear the errors
-                errorProvider1.Clear();
-                MessageBox.Show(strOutputMsg, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                loadUser();
-                //reset the selected id
-                userSelectedId = null;
-
-
-                TBPass.Clear();
-                TBUser.Clear();
-                TBContact.Clear();
-                TBName.Clear();
-                CBRole.ResetText();
-            }
-            else
-            {
-                // error 
-                MessageBox.Show(strOutputMsg, "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
+            TBPass.Clear();
+            TBUser.Clear();
+            TBContact.Clear();
+            TBFName.Clear();
+            TBLName.Clear();
+            CBRole.ResetText();
         }
+        else
+        {
+            // Error
+            MessageBox.Show(strOutputMsg, "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+    }
+    else
+    {
+        // User not found
+        MessageBox.Show("User not found.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+    }
+}
 
         private void BTDelete_Click(object sender, EventArgs e)
         {
             String username = TBUser.Text;
             String pass = TBPass.Text;
+
             String strOutputMsg = "";
 
             if (userSelectedId == null)
@@ -182,7 +239,8 @@ namespace DentalAppointment.Forms
                 TBPass.Clear();
                 TBUser.Clear();
                 TBContact.Clear();
-                TBName.Clear();
+                TBFName.Clear();
+                TBLName.Clear();
                 CBRole.ResetText();
             }
             else
@@ -192,9 +250,26 @@ namespace DentalAppointment.Forms
             }
         }
 
-        private void TBName_TextChanged(object sender, EventArgs e)
+        private void TBPass_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void CBRole_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void loadCBRole()
+        {
+            using (var db = new AppointmentSysEnt()) {
+
+                listRole = db.Roles.ToList();
+
+                CBRole.DisplayMember = "roleName";
+                CBRole.ValueMember = "roleDescription";
+                CBRole.DataSource = listRole;
+            }
         }
     }
 }
