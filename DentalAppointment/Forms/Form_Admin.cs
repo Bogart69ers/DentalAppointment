@@ -14,6 +14,7 @@ namespace DentalAppointment.Forms
 {
     public partial class Form_Admin : Form
     {
+        bool sidebarExpand;
         public List<Role> listRole;
         UserRepo Repo;
         int? userSelectedId = null;
@@ -270,6 +271,40 @@ namespace DentalAppointment.Forms
                 CBRole.ValueMember = "roleDescription";
                 CBRole.DataSource = listRole;
             }
+        }
+
+        private void menuButton_Click(object sender, EventArgs e)
+        {
+            SidebarT.Start();
+
+        }
+
+        private void AdminSideT(object sender, EventArgs e)
+        {
+            if (sidebarExpand)
+            {
+                SidebarMenu.Width -= 10;
+                if (SidebarMenu.Width == SidebarMenu.MinimumSize.Width)
+                {
+                    sidebarExpand = false;
+                    SidebarT.Stop();
+                }
+            }
+            else
+            {
+                SidebarMenu.Width += 10;
+                if (SidebarMenu.Width == SidebarMenu.MaximumSize.Width)
+                {
+                    sidebarExpand = true;
+                    SidebarT.Stop();
+                }
+            }
+        }
+
+        private void logoutBt_Click(object sender, EventArgs e)
+        {
+            new Form_Landing().Show();
+            this.Hide();
         }
     }
 }

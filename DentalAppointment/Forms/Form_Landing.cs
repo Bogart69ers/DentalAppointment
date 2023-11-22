@@ -10,31 +10,31 @@ using System.Windows.Forms;
 
 namespace DentalAppointment.Forms
 {
-    public partial class Form_Dentist : Form
+    public partial class Form_Landing : Form
     {
         bool sidebarExpand;
-        public Form_Dentist()
+        public Form_Landing()
         {
             InitializeComponent();
         }
 
-        private void btLogout_Click(object sender, EventArgs e)
+        private void bunifuButton1_Click(object sender, EventArgs e)
         {
             new Form_Login().Show();
             this.Hide();
         }
 
-        private void menuButton_Click(object sender, EventArgs e)
+        private void bunifuButton2_Click(object sender, EventArgs e)
         {
-            SidebarT.Start();
+
         }
 
-        private void dentistT(object sender, EventArgs e)
+        private void sidebarTimer(object sender, EventArgs e)
         {
-            if (sidebarExpand)
+            if(sidebarExpand)
             {
                 SidebarMenu.Width -= 10;
-                if (SidebarMenu.Width == SidebarMenu.MinimumSize.Width)
+                if(SidebarMenu.Width == SidebarMenu.MinimumSize.Width)
                 {
                     sidebarExpand = false;
                     SidebarT.Stop();
@@ -43,7 +43,7 @@ namespace DentalAppointment.Forms
             else
             {
                 SidebarMenu.Width += 10;
-                if (SidebarMenu.Width == SidebarMenu.MaximumSize.Width)
+                if(SidebarMenu.Width == SidebarMenu.MaximumSize.Width)
                 {
                     sidebarExpand = true;
                     SidebarT.Stop();
@@ -51,10 +51,9 @@ namespace DentalAppointment.Forms
             }
         }
 
-        private void btAppointments_Click(object sender, EventArgs e)
+        private void menuButton_Click(object sender, EventArgs e)
         {
-            new Form_Dentist_Appointments().Show();
-            this.Hide();
+            SidebarT.Start();
         }
     }
 }

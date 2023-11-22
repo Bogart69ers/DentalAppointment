@@ -10,17 +10,17 @@ using System.Windows.Forms;
 
 namespace DentalAppointment.Forms
 {
-    public partial class Form_Dentist : Form
+    public partial class Form_Dentist_Appointments : Form
     {
         bool sidebarExpand;
-        public Form_Dentist()
+        public Form_Dentist_Appointments()
         {
             InitializeComponent();
         }
 
-        private void btLogout_Click(object sender, EventArgs e)
+        private void btDashboard_Click(object sender, EventArgs e)
         {
-            new Form_Login().Show();
+            new Form_Dentist().Show();
             this.Hide();
         }
 
@@ -29,7 +29,7 @@ namespace DentalAppointment.Forms
             SidebarT.Start();
         }
 
-        private void dentistT(object sender, EventArgs e)
+        private void appointmentsT(object sender, EventArgs e)
         {
             if (sidebarExpand)
             {
@@ -49,12 +49,6 @@ namespace DentalAppointment.Forms
                     SidebarT.Stop();
                 }
             }
-        }
-
-        private void btAppointments_Click(object sender, EventArgs e)
-        {
-            new Form_Dentist_Appointments().Show();
-            this.Hide();
         }
     }
 }

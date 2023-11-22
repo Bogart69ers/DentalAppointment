@@ -49,6 +49,9 @@
     <Reference Include="Bunifu.UI.WinForms.BunifuColorTransition">
       <HintPath>..\..\..\..\Downloads\_Getintopc.com_Bunifu_UI_WinForms_5.0.3\Bunifu_UI_WinForms_5.0.3\ui.winforms.5.0.3\Bunifu.UI.WinForms.BunifuColorTransition.dll</HintPath>
     </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuDatePicker">
+      <HintPath>..\..\..\..\Downloads\_Getintopc.com_Bunifu_UI_WinForms_5.0.3\Bunifu_UI_WinForms_5.0.3\ui.winforms.5.0.3\Bunifu.UI.WinForms.BunifuDatePicker.dll</HintPath>
+    </Reference>
     <Reference Include="Bunifu.UI.WinForms.BunifuFormDock">
       <HintPath>..\..\..\..\Downloads\_Getintopc.com_Bunifu_UI_WinForms_5.0.3\Bunifu_UI_WinForms_5.0.3\ui.winforms.5.0.3\Bunifu.UI.WinForms.BunifuFormDock.dll</HintPath>
     </Reference>
@@ -69,6 +72,9 @@
     </Reference>
     <Reference Include="Bunifu.UI.WinForms.BunifuTextBox">
       <HintPath>..\..\..\..\Downloads\_Getintopc.com_Bunifu_UI_WinForms_5.0.3\Bunifu_UI_WinForms_5.0.3\ui.winforms.5.0.3\Bunifu.UI.WinForms.BunifuTextBox.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuToggleSwitch">
+      <HintPath>..\..\..\..\Downloads\_Getintopc.com_Bunifu_UI_WinForms_5.0.3\Bunifu_UI_WinForms_5.0.3\ui.winforms.5.0.3\Bunifu.UI.WinForms.BunifuToggleSwitch.dll</HintPath>
     </Reference>
     <Reference Include="Bunifu.UI.WinForms.BunifuToolTip">
       <HintPath>..\..\..\..\Downloads\_Getintopc.com_Bunifu_UI_WinForms_5.0.3\Bunifu_UI_WinForms_5.0.3\ui.winforms.5.0.3\Bunifu.UI.WinForms.BunifuToolTip.dll</HintPath>
@@ -117,17 +123,23 @@
     <Compile Include="Forms\Form_Dentist.Designer.cs">
       <DependentUpon>Form_Dentist.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Form_Dentist_Appointments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form_Dentist_Appointments.Designer.cs">
+      <DependentUpon>Form_Dentist_Appointments.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Form_Login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Form_Login.Designer.cs">
       <DependentUpon>Form_Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Form_Patient.cs">
+    <Compile Include="Forms\Form_Landing.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form_Patient.Designer.cs">
-      <DependentUpon>Form_Patient.cs</DependentUpon>
+    <Compile Include="Forms\Form_Landing.Designer.cs">
+      <DependentUpon>Form_Landing.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -169,11 +181,14 @@
     <EmbeddedResource Include="Forms\Form_Dentist.resx">
       <DependentUpon>Form_Dentist.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form_Dentist_Appointments.resx">
+      <DependentUpon>Form_Dentist_Appointments.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form_Login.resx">
       <DependentUpon>Form_Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Form_Patient.resx">
-      <DependentUpon>Form_Patient.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Form_Landing.resx">
+      <DependentUpon>Form_Landing.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -184,6 +199,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="DentalAppointmentDataSet.xsc">
       <DependentUpon>DentalAppointmentDataSet.xsd</DependentUpon>
@@ -221,6 +237,11 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Pictures\Home.png" />
+    <None Include="Pictures\Logo 2.png" />
+    <None Include="Pictures\Logout.png" />
+    <None Include="Pictures\Home.bmp" />
+    <Content Include="Bunifu.Licensing.dll" />
     <Content Include="Repository\DentalAppointment.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DentalAppointment.edmx</DependentUpon>

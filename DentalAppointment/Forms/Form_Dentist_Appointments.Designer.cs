@@ -1,6 +1,6 @@
 ﻿namespace DentalAppointment.Forms
 {
-    partial class Form_Dentist
+    partial class Form_Dentist_Appointments
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Dentist));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Dentist_Appointments));
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges5 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges6 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
@@ -38,8 +38,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.SidebarT = new System.Windows.Forms.Timer(this.components);
             this.panel4 = new System.Windows.Forms.Panel();
+            this.SidebarT = new System.Windows.Forms.Timer(this.components);
             this.menuButton = new System.Windows.Forms.PictureBox();
             this.btDashboard = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btAppointments = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
@@ -65,7 +65,7 @@
             this.SidebarMenu.MinimumSize = new System.Drawing.Size(65, 703);
             this.SidebarMenu.Name = "SidebarMenu";
             this.SidebarMenu.Size = new System.Drawing.Size(65, 703);
-            this.SidebarMenu.TabIndex = 1;
+            this.SidebarMenu.TabIndex = 2;
             // 
             // panel1
             // 
@@ -103,11 +103,6 @@
             this.panel2.Size = new System.Drawing.Size(219, 48);
             this.panel2.TabIndex = 3;
             // 
-            // SidebarT
-            // 
-            this.SidebarT.Interval = 1;
-            this.SidebarT.Tick += new System.EventHandler(this.dentistT);
-            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.btLogout);
@@ -115,6 +110,11 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(219, 48);
             this.panel4.TabIndex = 5;
+            // 
+            // SidebarT
+            // 
+            this.SidebarT.Interval = 1;
+            this.SidebarT.Tick += new System.EventHandler(this.appointmentsT);
             // 
             // menuButton
             // 
@@ -216,6 +216,7 @@
             this.btDashboard.TextMarginLeft = 0;
             this.btDashboard.TextPadding = new System.Windows.Forms.Padding(0);
             this.btDashboard.UseDefaultRadiusAndThickness = true;
+            this.btDashboard.Click += new System.EventHandler(this.btDashboard_Click);
             // 
             // btAppointments
             // 
@@ -305,7 +306,6 @@
             this.btAppointments.TextMarginLeft = 0;
             this.btAppointments.TextPadding = new System.Windows.Forms.Padding(0);
             this.btAppointments.UseDefaultRadiusAndThickness = true;
-            this.btAppointments.Click += new System.EventHandler(this.btAppointments_Click);
             // 
             // btLogout
             // 
@@ -395,9 +395,8 @@
             this.btLogout.TextMarginLeft = 0;
             this.btLogout.TextPadding = new System.Windows.Forms.Padding(0);
             this.btLogout.UseDefaultRadiusAndThickness = true;
-            this.btLogout.Click += new System.EventHandler(this.btLogout_Click);
             // 
-            // Form_Dentist
+            // Form_Dentist_Appointments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -407,8 +406,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "Form_Dentist";
-            this.Text = "Dentist Dashboard";
+            this.Name = "Form_Dentist_Appointments";
+            this.Text = "Dentist Appointments";
             this.SidebarMenu.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -430,8 +429,8 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btDashboard;
         private System.Windows.Forms.Panel panel2;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btAppointments;
-        private System.Windows.Forms.Timer SidebarT;
         private System.Windows.Forms.Panel panel4;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btLogout;
+        private System.Windows.Forms.Timer SidebarT;
     }
 }
