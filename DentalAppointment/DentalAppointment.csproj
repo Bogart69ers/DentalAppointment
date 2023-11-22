@@ -52,6 +52,9 @@
     <Reference Include="Bunifu.UI.WinForms.BunifuDatePicker">
       <HintPath>..\..\..\..\Downloads\_Getintopc.com_Bunifu_UI_WinForms_5.0.3\Bunifu_UI_WinForms_5.0.3\ui.winforms.5.0.3\Bunifu.UI.WinForms.BunifuDatePicker.dll</HintPath>
     </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuDropdown">
+      <HintPath>..\..\..\..\Downloads\_Getintopc.com_Bunifu_UI_WinForms_5.0.3\Bunifu_UI_WinForms_5.0.3\ui.winforms.5.0.3\Bunifu.UI.WinForms.BunifuDropdown.dll</HintPath>
+    </Reference>
     <Reference Include="Bunifu.UI.WinForms.BunifuFormDock">
       <HintPath>..\..\..\..\Downloads\_Getintopc.com_Bunifu_UI_WinForms_5.0.3\Bunifu_UI_WinForms_5.0.3\ui.winforms.5.0.3\Bunifu.UI.WinForms.BunifuFormDock.dll</HintPath>
     </Reference>
@@ -69,6 +72,9 @@
     </Reference>
     <Reference Include="Bunifu.UI.WinForms.BunifuPictureBox">
       <HintPath>..\..\..\..\Downloads\_Getintopc.com_Bunifu_UI_WinForms_5.0.3\Bunifu_UI_WinForms_5.0.3\ui.winforms.5.0.3\Bunifu.UI.WinForms.BunifuPictureBox.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuRating">
+      <HintPath>..\..\..\..\Downloads\_Getintopc.com_Bunifu_UI_WinForms_5.0.3\Bunifu_UI_WinForms_5.0.3\ui.winforms.5.0.3\Bunifu.UI.WinForms.BunifuRating.dll</HintPath>
     </Reference>
     <Reference Include="Bunifu.UI.WinForms.BunifuTextBox">
       <HintPath>..\..\..\..\Downloads\_Getintopc.com_Bunifu_UI_WinForms_5.0.3\Bunifu_UI_WinForms_5.0.3\ui.winforms.5.0.3\Bunifu.UI.WinForms.BunifuTextBox.dll</HintPath>
@@ -193,14 +199,8 @@
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="DentalAppointmentDataSet.xsc">
       <DependentUpon>DentalAppointmentDataSet.xsd</DependentUpon>
     </None>
@@ -242,6 +242,10 @@
     <None Include="Pictures\Logout.png" />
     <None Include="Pictures\Home.bmp" />
     <Content Include="Bunifu.Licensing.dll" />
+    <None Include="Pictures\Calendar.png" />
+    <None Include="Pictures\Login.png" />
+    <None Include="Pictures\Logo.png" />
+    <None Include="Pictures\Menu.png" />
     <Content Include="Repository\DentalAppointment.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DentalAppointment.edmx</DependentUpon>

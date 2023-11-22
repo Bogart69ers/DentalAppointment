@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Admin));
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
@@ -52,6 +51,7 @@
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties18 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties19 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties20 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Admin));
             this.userlabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.BTRegister = new System.Windows.Forms.Button();
@@ -62,7 +62,6 @@
             this.RoleLabel = new System.Windows.Forms.Label();
             this.ContactLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.CBRole = new System.Windows.Forms.ComboBox();
             this.uSERINFORMATIONBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dentalAppointmentDataSet = new DentalAppointment.DentalAppointmentDataSet();
             this.uSER_INFORMATIONTableAdapter = new DentalAppointment.DentalAppointmentDataSetTableAdapters.USER_INFORMATIONTableAdapter();
@@ -77,17 +76,19 @@
             this.SidebarMenu = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.SidebarT = new System.Windows.Forms.Timer(this.components);
             this.menuButton = new System.Windows.Forms.PictureBox();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.homeBt = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.logoutBt = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.SidebarT = new System.Windows.Forms.Timer(this.components);
             this.TBPass = new Bunifu.UI.WinForms.BunifuTextBox();
             this.TBUser = new Bunifu.UI.WinForms.BunifuTextBox();
             this.TBFName = new Bunifu.UI.WinForms.BunifuTextBox();
             this.TBContact = new Bunifu.UI.WinForms.BunifuTextBox();
             this.TBLName = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.CBRole = new Bunifu.UI.WinForms.BunifuDropdown();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_admin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uSERINFORMATIONBindingSource)).BeginInit();
@@ -100,9 +101,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.SidebarMenu.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.menuButton)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.menuButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // userlabel
@@ -120,7 +122,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(111, 157);
+            this.label1.Location = new System.Drawing.Point(106, 157);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 20);
@@ -129,8 +131,8 @@
             // 
             // BTRegister
             // 
-            this.BTRegister.Location = new System.Drawing.Point(1006, 39);
-            this.BTRegister.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.BTRegister.Location = new System.Drawing.Point(884, 64);
+            this.BTRegister.Margin = new System.Windows.Forms.Padding(5);
             this.BTRegister.Name = "BTRegister";
             this.BTRegister.Size = new System.Drawing.Size(200, 40);
             this.BTRegister.TabIndex = 7;
@@ -140,8 +142,8 @@
             // 
             // BTUpdate
             // 
-            this.BTUpdate.Location = new System.Drawing.Point(1006, 105);
-            this.BTUpdate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.BTUpdate.Location = new System.Drawing.Point(884, 124);
+            this.BTUpdate.Margin = new System.Windows.Forms.Padding(5);
             this.BTUpdate.Name = "BTUpdate";
             this.BTUpdate.Size = new System.Drawing.Size(200, 37);
             this.BTUpdate.TabIndex = 8;
@@ -151,8 +153,8 @@
             // 
             // BTDelete
             // 
-            this.BTDelete.Location = new System.Drawing.Point(1006, 168);
-            this.BTDelete.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.BTDelete.Location = new System.Drawing.Point(884, 182);
+            this.BTDelete.Margin = new System.Windows.Forms.Padding(5);
             this.BTDelete.Name = "BTDelete";
             this.BTDelete.Size = new System.Drawing.Size(200, 37);
             this.BTDelete.TabIndex = 9;
@@ -165,7 +167,7 @@
             this.dgv_admin.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgv_admin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_admin.Location = new System.Drawing.Point(100, 242);
-            this.dgv_admin.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.dgv_admin.Margin = new System.Windows.Forms.Padding(5);
             this.dgv_admin.Name = "dgv_admin";
             this.dgv_admin.Size = new System.Drawing.Size(1095, 433);
             this.dgv_admin.TabIndex = 7;
@@ -178,7 +180,7 @@
             // RoleLabel
             // 
             this.RoleLabel.AutoSize = true;
-            this.RoleLabel.Location = new System.Drawing.Point(590, 157);
+            this.RoleLabel.Location = new System.Drawing.Point(509, 160);
             this.RoleLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.RoleLabel.Name = "RoleLabel";
             this.RoleLabel.Size = new System.Drawing.Size(39, 20);
@@ -189,7 +191,7 @@
             // 
             this.ContactLabel.AutoSize = true;
             this.ContactLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ContactLabel.Location = new System.Drawing.Point(591, 86);
+            this.ContactLabel.Location = new System.Drawing.Point(510, 86);
             this.ContactLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.ContactLabel.Name = "ContactLabel";
             this.ContactLabel.Size = new System.Drawing.Size(117, 18);
@@ -200,22 +202,12 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(104, 11);
+            this.label2.Location = new System.Drawing.Point(106, 11);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(80, 20);
             this.label2.TabIndex = 13;
             this.label2.Text = "First Name";
-            // 
-            // CBRole
-            // 
-            this.CBRole.FormattingEnabled = true;
-            this.CBRole.Location = new System.Drawing.Point(581, 182);
-            this.CBRole.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.CBRole.Name = "CBRole";
-            this.CBRole.Size = new System.Drawing.Size(361, 28);
-            this.CBRole.TabIndex = 6;
-            this.CBRole.SelectedIndexChanged += new System.EventHandler(this.CBRole_SelectedIndexChanged);
             // 
             // uSERINFORMATIONBindingSource
             // 
@@ -264,7 +256,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(590, 11);
+            this.label3.Location = new System.Drawing.Point(509, 11);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 20);
@@ -305,27 +297,6 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "Menu";
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.homeBt);
-            this.panel3.Location = new System.Drawing.Point(3, 80);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(219, 48);
-            this.panel3.TabIndex = 4;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.logoutBt);
-            this.panel4.Location = new System.Drawing.Point(3, 134);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(219, 48);
-            this.panel4.TabIndex = 4;
-            // 
-            // SidebarT
-            // 
-            this.SidebarT.Interval = 1;
-            this.SidebarT.Tick += new System.EventHandler(this.AdminSideT);
-            // 
             // menuButton
             // 
             this.menuButton.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -337,6 +308,14 @@
             this.menuButton.TabIndex = 0;
             this.menuButton.TabStop = false;
             this.menuButton.Click += new System.EventHandler(this.menuButton_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.homeBt);
+            this.panel3.Location = new System.Drawing.Point(3, 80);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(219, 48);
+            this.panel3.TabIndex = 4;
             // 
             // homeBt
             // 
@@ -366,7 +345,7 @@
             this.homeBt.DisabledBorderColor = System.Drawing.Color.Transparent;
             this.homeBt.DisabledFillColor = System.Drawing.Color.Transparent;
             this.homeBt.DisabledForecolor = System.Drawing.Color.Transparent;
-            this.homeBt.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
+            this.homeBt.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Disabled;
             this.homeBt.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.homeBt.ForeColor = System.Drawing.Color.Transparent;
             this.homeBt.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -427,6 +406,14 @@
             this.homeBt.TextPadding = new System.Windows.Forms.Padding(0);
             this.homeBt.UseDefaultRadiusAndThickness = true;
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.logoutBt);
+            this.panel4.Location = new System.Drawing.Point(3, 134);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(219, 48);
+            this.panel4.TabIndex = 4;
+            // 
             // logoutBt
             // 
             this.logoutBt.AllowAnimations = true;
@@ -455,7 +442,7 @@
             this.logoutBt.DisabledBorderColor = System.Drawing.Color.Transparent;
             this.logoutBt.DisabledFillColor = System.Drawing.Color.Transparent;
             this.logoutBt.DisabledForecolor = System.Drawing.Color.Transparent;
-            this.logoutBt.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
+            this.logoutBt.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Disabled;
             this.logoutBt.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logoutBt.ForeColor = System.Drawing.Color.Transparent;
             this.logoutBt.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -517,6 +504,11 @@
             this.logoutBt.UseDefaultRadiusAndThickness = true;
             this.logoutBt.Click += new System.EventHandler(this.logoutBt_Click);
             // 
+            // SidebarT
+            // 
+            this.SidebarT.Interval = 1;
+            this.SidebarT.Tick += new System.EventHandler(this.AdminSideT);
+            // 
             // TBPass
             // 
             this.TBPass.AcceptsReturn = false;
@@ -534,7 +526,7 @@
             this.TBPass.BorderThickness = 1;
             this.TBPass.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.TBPass.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.TBPass.DefaultFont = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.TBPass.DefaultFont = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TBPass.DefaultText = "";
             this.TBPass.FillColor = System.Drawing.Color.White;
             this.TBPass.HideSelection = true;
@@ -581,7 +573,7 @@
             this.TBPass.SelectionLength = 0;
             this.TBPass.SelectionStart = 0;
             this.TBPass.ShortcutsEnabled = true;
-            this.TBPass.Size = new System.Drawing.Size(361, 43);
+            this.TBPass.Size = new System.Drawing.Size(361, 46);
             this.TBPass.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             this.TBPass.TabIndex = 5;
             this.TBPass.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -610,7 +602,7 @@
             this.TBUser.BorderThickness = 1;
             this.TBUser.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.TBUser.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.TBUser.DefaultFont = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.TBUser.DefaultFont = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TBUser.DefaultText = "";
             this.TBUser.FillColor = System.Drawing.Color.White;
             this.TBUser.HideSelection = true;
@@ -657,7 +649,7 @@
             this.TBUser.SelectionLength = 0;
             this.TBUser.SelectionStart = 0;
             this.TBUser.ShortcutsEnabled = true;
-            this.TBUser.Size = new System.Drawing.Size(361, 43);
+            this.TBUser.Size = new System.Drawing.Size(361, 46);
             this.TBUser.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             this.TBUser.TabIndex = 3;
             this.TBUser.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -685,7 +677,7 @@
             this.TBFName.BorderThickness = 1;
             this.TBFName.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.TBFName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.TBFName.DefaultFont = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.TBFName.DefaultFont = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TBFName.DefaultText = "";
             this.TBFName.FillColor = System.Drawing.Color.White;
             this.TBFName.HideSelection = true;
@@ -732,7 +724,7 @@
             this.TBFName.SelectionLength = 0;
             this.TBFName.SelectionStart = 0;
             this.TBFName.ShortcutsEnabled = true;
-            this.TBFName.Size = new System.Drawing.Size(361, 43);
+            this.TBFName.Size = new System.Drawing.Size(361, 46);
             this.TBFName.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             this.TBFName.TabIndex = 1;
             this.TBFName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -760,7 +752,7 @@
             this.TBContact.BorderThickness = 1;
             this.TBContact.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.TBContact.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.TBContact.DefaultFont = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.TBContact.DefaultFont = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TBContact.DefaultText = "";
             this.TBContact.FillColor = System.Drawing.Color.White;
             this.TBContact.HideSelection = true;
@@ -770,7 +762,7 @@
             this.TBContact.IconRight = null;
             this.TBContact.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.TBContact.Lines = new string[0];
-            this.TBContact.Location = new System.Drawing.Point(581, 109);
+            this.TBContact.Location = new System.Drawing.Point(500, 109);
             this.TBContact.Margin = new System.Windows.Forms.Padding(5);
             this.TBContact.MaxLength = 32767;
             this.TBContact.MinimumSize = new System.Drawing.Size(1, 3);
@@ -807,7 +799,7 @@
             this.TBContact.SelectionLength = 0;
             this.TBContact.SelectionStart = 0;
             this.TBContact.ShortcutsEnabled = true;
-            this.TBContact.Size = new System.Drawing.Size(361, 43);
+            this.TBContact.Size = new System.Drawing.Size(361, 46);
             this.TBContact.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             this.TBContact.TabIndex = 4;
             this.TBContact.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -835,7 +827,7 @@
             this.TBLName.BorderThickness = 1;
             this.TBLName.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.TBLName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.TBLName.DefaultFont = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.TBLName.DefaultFont = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TBLName.DefaultText = "";
             this.TBLName.FillColor = System.Drawing.Color.White;
             this.TBLName.HideSelection = true;
@@ -845,7 +837,7 @@
             this.TBLName.IconRight = null;
             this.TBLName.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.TBLName.Lines = new string[0];
-            this.TBLName.Location = new System.Drawing.Point(581, 36);
+            this.TBLName.Location = new System.Drawing.Point(500, 36);
             this.TBLName.Margin = new System.Windows.Forms.Padding(5);
             this.TBLName.MaxLength = 32767;
             this.TBLName.MinimumSize = new System.Drawing.Size(1, 3);
@@ -882,7 +874,7 @@
             this.TBLName.SelectionLength = 0;
             this.TBLName.SelectionStart = 0;
             this.TBLName.ShortcutsEnabled = true;
-            this.TBLName.Size = new System.Drawing.Size(361, 43);
+            this.TBLName.Size = new System.Drawing.Size(361, 46);
             this.TBLName.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             this.TBLName.TabIndex = 2;
             this.TBLName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -893,19 +885,71 @@
             this.TBLName.UseSystemPasswordChar = false;
             this.TBLName.WordWrap = true;
             // 
+            // CBRole
+            // 
+            this.CBRole.BackColor = System.Drawing.Color.Transparent;
+            this.CBRole.BackgroundColor = System.Drawing.Color.White;
+            this.CBRole.BorderColor = System.Drawing.Color.Silver;
+            this.CBRole.BorderRadius = 5;
+            this.CBRole.Color = System.Drawing.Color.Silver;
+            this.CBRole.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
+            this.CBRole.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.CBRole.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.CBRole.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.CBRole.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.CBRole.DisabledIndicatorColor = System.Drawing.Color.DarkGray;
+            this.CBRole.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.CBRole.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thin;
+            this.CBRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBRole.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
+            this.CBRole.FillDropDown = true;
+            this.CBRole.FillIndicator = false;
+            this.CBRole.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CBRole.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CBRole.ForeColor = System.Drawing.Color.Black;
+            this.CBRole.FormattingEnabled = true;
+            this.CBRole.Icon = null;
+            this.CBRole.IndicatorAlignment = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
+            this.CBRole.IndicatorColor = System.Drawing.Color.Gray;
+            this.CBRole.IndicatorLocation = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
+            this.CBRole.ItemBackColor = System.Drawing.Color.White;
+            this.CBRole.ItemBorderColor = System.Drawing.Color.White;
+            this.CBRole.ItemForeColor = System.Drawing.Color.Black;
+            this.CBRole.ItemHeight = 38;
+            this.CBRole.ItemHighLightColor = System.Drawing.Color.DodgerBlue;
+            this.CBRole.ItemHighLightForeColor = System.Drawing.Color.White;
+            this.CBRole.ItemTopMargin = 3;
+            this.CBRole.Location = new System.Drawing.Point(500, 182);
+            this.CBRole.Name = "CBRole";
+            this.CBRole.Size = new System.Drawing.Size(361, 44);
+            this.CBRole.TabIndex = 19;
+            this.CBRole.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
+            this.CBRole.TextLeftMargin = 5;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(1093, 11);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(125, 104);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 23;
+            this.pictureBox2.TabStop = false;
+            // 
             // Form_Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(1230, 703);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.CBRole);
             this.Controls.Add(this.SidebarMenu);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.TBPass);
             this.Controls.Add(this.TBUser);
             this.Controls.Add(this.TBFName);
             this.Controls.Add(this.TBContact);
-            this.Controls.Add(this.CBRole);
             this.Controls.Add(this.TBLName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.ContactLabel);
@@ -919,7 +963,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximizeBox = false;
             this.Name = "Form_Admin";
             this.Text = "ADMIN ACCESS";
@@ -937,9 +981,10 @@
             this.SidebarMenu.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.menuButton)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.menuButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -957,7 +1002,6 @@
         private System.Windows.Forms.Label ContactLabel;
         private System.Windows.Forms.Label label2;
         private Bunifu.UI.WinForms.BunifuTextBox TBLName;
-        private System.Windows.Forms.ComboBox CBRole;
         private Bunifu.UI.WinForms.BunifuTextBox TBContact;
         private Bunifu.UI.WinForms.BunifuTextBox TBFName;
         private Bunifu.UI.WinForms.BunifuTextBox TBUser;
@@ -982,5 +1026,7 @@
         private System.Windows.Forms.Panel panel4;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton logoutBt;
         private System.Windows.Forms.Timer SidebarT;
+        private Bunifu.UI.WinForms.BunifuDropdown CBRole;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

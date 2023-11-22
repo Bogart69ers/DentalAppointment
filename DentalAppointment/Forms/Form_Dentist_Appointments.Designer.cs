@@ -30,26 +30,26 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Dentist_Appointments));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges5 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges6 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             this.SidebarMenu = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.SidebarT = new System.Windows.Forms.Timer(this.components);
             this.menuButton = new System.Windows.Forms.PictureBox();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.btDashboard = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.btAppointments = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.btLogout = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.SidebarT = new System.Windows.Forms.Timer(this.components);
             this.SidebarMenu.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.menuButton)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.menuButton)).BeginInit();
             this.SuspendLayout();
             // 
             // SidebarMenu
@@ -87,35 +87,6 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Menu";
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.btDashboard);
-            this.panel3.Location = new System.Drawing.Point(3, 80);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(219, 48);
-            this.panel3.TabIndex = 4;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.btAppointments);
-            this.panel2.Location = new System.Drawing.Point(3, 134);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(219, 48);
-            this.panel2.TabIndex = 3;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.btLogout);
-            this.panel4.Location = new System.Drawing.Point(3, 188);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(219, 48);
-            this.panel4.TabIndex = 5;
-            // 
-            // SidebarT
-            // 
-            this.SidebarT.Interval = 1;
-            this.SidebarT.Tick += new System.EventHandler(this.appointmentsT);
-            // 
             // menuButton
             // 
             this.menuButton.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -127,6 +98,14 @@
             this.menuButton.TabIndex = 0;
             this.menuButton.TabStop = false;
             this.menuButton.Click += new System.EventHandler(this.menuButton_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.btDashboard);
+            this.panel3.Location = new System.Drawing.Point(3, 80);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(219, 48);
+            this.panel3.TabIndex = 4;
             // 
             // btDashboard
             // 
@@ -147,16 +126,16 @@
             this.btDashboard.ColorContrastOnClick = 45;
             this.btDashboard.ColorContrastOnHover = 45;
             this.btDashboard.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges4.BottomLeft = true;
-            borderEdges4.BottomRight = true;
-            borderEdges4.TopLeft = true;
-            borderEdges4.TopRight = true;
-            this.btDashboard.CustomizableEdges = borderEdges4;
+            borderEdges1.BottomLeft = true;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = true;
+            borderEdges1.TopRight = true;
+            this.btDashboard.CustomizableEdges = borderEdges1;
             this.btDashboard.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btDashboard.DisabledBorderColor = System.Drawing.Color.Transparent;
             this.btDashboard.DisabledFillColor = System.Drawing.Color.Transparent;
             this.btDashboard.DisabledForecolor = System.Drawing.Color.Transparent;
-            this.btDashboard.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
+            this.btDashboard.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Disabled;
             this.btDashboard.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btDashboard.ForeColor = System.Drawing.Color.Transparent;
             this.btDashboard.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -218,6 +197,14 @@
             this.btDashboard.UseDefaultRadiusAndThickness = true;
             this.btDashboard.Click += new System.EventHandler(this.btDashboard_Click);
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.btAppointments);
+            this.panel2.Location = new System.Drawing.Point(3, 134);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(219, 48);
+            this.panel2.TabIndex = 3;
+            // 
             // btAppointments
             // 
             this.btAppointments.AllowAnimations = true;
@@ -237,16 +224,16 @@
             this.btAppointments.ColorContrastOnClick = 45;
             this.btAppointments.ColorContrastOnHover = 45;
             this.btAppointments.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges5.BottomLeft = true;
-            borderEdges5.BottomRight = true;
-            borderEdges5.TopLeft = true;
-            borderEdges5.TopRight = true;
-            this.btAppointments.CustomizableEdges = borderEdges5;
+            borderEdges2.BottomLeft = true;
+            borderEdges2.BottomRight = true;
+            borderEdges2.TopLeft = true;
+            borderEdges2.TopRight = true;
+            this.btAppointments.CustomizableEdges = borderEdges2;
             this.btAppointments.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btAppointments.DisabledBorderColor = System.Drawing.Color.Transparent;
             this.btAppointments.DisabledFillColor = System.Drawing.Color.Transparent;
             this.btAppointments.DisabledForecolor = System.Drawing.Color.Transparent;
-            this.btAppointments.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
+            this.btAppointments.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Disabled;
             this.btAppointments.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btAppointments.ForeColor = System.Drawing.Color.Transparent;
             this.btAppointments.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -307,6 +294,14 @@
             this.btAppointments.TextPadding = new System.Windows.Forms.Padding(0);
             this.btAppointments.UseDefaultRadiusAndThickness = true;
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.btLogout);
+            this.panel4.Location = new System.Drawing.Point(3, 188);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(219, 48);
+            this.panel4.TabIndex = 5;
+            // 
             // btLogout
             // 
             this.btLogout.AllowAnimations = true;
@@ -326,16 +321,16 @@
             this.btLogout.ColorContrastOnClick = 45;
             this.btLogout.ColorContrastOnHover = 45;
             this.btLogout.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges6.BottomLeft = true;
-            borderEdges6.BottomRight = true;
-            borderEdges6.TopLeft = true;
-            borderEdges6.TopRight = true;
-            this.btLogout.CustomizableEdges = borderEdges6;
+            borderEdges3.BottomLeft = true;
+            borderEdges3.BottomRight = true;
+            borderEdges3.TopLeft = true;
+            borderEdges3.TopRight = true;
+            this.btLogout.CustomizableEdges = borderEdges3;
             this.btLogout.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btLogout.DisabledBorderColor = System.Drawing.Color.Transparent;
             this.btLogout.DisabledFillColor = System.Drawing.Color.Transparent;
             this.btLogout.DisabledForecolor = System.Drawing.Color.Transparent;
-            this.btLogout.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
+            this.btLogout.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Disabled;
             this.btLogout.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btLogout.ForeColor = System.Drawing.Color.Transparent;
             this.btLogout.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -396,6 +391,11 @@
             this.btLogout.TextPadding = new System.Windows.Forms.Padding(0);
             this.btLogout.UseDefaultRadiusAndThickness = true;
             // 
+            // SidebarT
+            // 
+            this.SidebarT.Interval = 1;
+            this.SidebarT.Tick += new System.EventHandler(this.appointmentsT);
+            // 
             // Form_Dentist_Appointments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -411,10 +411,10 @@
             this.SidebarMenu.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.menuButton)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.menuButton)).EndInit();
             this.ResumeLayout(false);
 
         }

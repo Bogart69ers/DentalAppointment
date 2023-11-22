@@ -55,5 +55,15 @@ namespace DentalAppointment.Forms
         {
             SidebarT.Start();
         }
+
+        private void bunifuLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form_Landing_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
