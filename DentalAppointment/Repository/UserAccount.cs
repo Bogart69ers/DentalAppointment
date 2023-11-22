@@ -21,7 +21,5 @@ namespace DentalAppointment.Repository
         public string ContactInfo { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-
-        
     }
 }
