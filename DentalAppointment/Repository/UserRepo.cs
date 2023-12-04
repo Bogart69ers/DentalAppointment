@@ -11,11 +11,30 @@ namespace DentalAppointment.Repository
 {
     public class UserRepo
     {
-        public AppointmentSysEnt db;
+        public DentalAppointmentSystemEntity db;
 
         public UserRepo() 
         {
-             db = new AppointmentSysEnt();       
+             db = new DentalAppointmentSystemEntity();       
+        }
+
+        public ErrorCode NewPatient(Patient aPatient, ref String outMessage)
+        {
+            ErrorCode retValue = ErrorCode.Error;
+            try
+            {
+                db.Patients.Add(aPatient);
+                db.SaveChanges();
+
+                outMessage = "Appointment Booked";
+                retValue = ErrorCode.Success;
+            }
+            catch (Exception ex)
+            {
+                outMessage = ex.Message;
+                MessageBox.Show(ex.Message);
+            }
+            return retValue;
         }
 
         public ErrorCode NewUser(UserAccount aUserAccount, ref String outMessage)
@@ -45,7 +64,7 @@ namespace DentalAppointment.Repository
             try
             {
                 // Find the user with id
-                UserAccount user = db.UserAccounts.Where(m => m.UserID == userId).FirstOrDefault();
+                UserAccount user = db.UserAccounts.Where(m => m.UserId == userId).FirstOrDefault();
 
                 if (user != null)
                 {
@@ -81,7 +100,7 @@ namespace DentalAppointment.Repository
             ErrorCode retValue = ErrorCode.Error;
             try
             {
-                UserAccount user = db.UserAccounts.Where(m => m.UserID == userId).FirstOrDefault();
+                UserAccount user = db.UserAccounts.Where(m => m.UserId == userId).FirstOrDefault();
                 // Remove the user
                 db.UserAccounts.Remove(user);
                 db.SaveChanges();       // Execute the update
@@ -101,13 +120,13 @@ namespace DentalAppointment.Repository
         public UserAccount GetUserByUsername(String username)
         {
             // re-initialize db object because sometimes data in the list not updated
-            db = new AppointmentSysEnt();
+            db = new DentalAppointmentSystemEntity();
             // SELECT TOP 1 * FROM USERACCOUNT WHERE userName == username
             return db.UserAccounts.Where(s => s.Username == username).FirstOrDefault();
         }
         public List<UserAccount> UserAccounts()
         {
-            db = new AppointmentSysEnt();
+            db = new DentalAppointmentSystemEntity();
 
             return db.UserAccounts.ToList();
         }

@@ -13,10 +13,10 @@ namespace DentalAppointment.Repository
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class AppointmentSysEnt : DbContext
+    public partial class DentalAppointmentSystemEntity : DbContext
     {
-        public AppointmentSysEnt()
-            : base("name=AppointmentSysEnt")
+        public DentalAppointmentSystemEntity()
+            : base("name=DentalAppointmentSystemEntity")
         {
         }
     
@@ -26,9 +26,10 @@ namespace DentalAppointment.Repository
         }
     
         public virtual DbSet<Appointment> Appointments { get; set; }
-        public virtual DbSet<Dentist> Dentists { get; set; }
         public virtual DbSet<Patient> Patients { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<Service> Services { get; set; }
         public virtual DbSet<UserAccount> UserAccounts { get; set; }
+        public virtual DbSet<Sex> Sexes { get; set; }
     }
 }

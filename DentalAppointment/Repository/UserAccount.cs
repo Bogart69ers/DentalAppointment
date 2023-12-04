@@ -14,12 +14,12 @@ namespace DentalAppointment.Repository
     
     public partial class UserAccount
     {
-        public int UserID { get; set; }
+        public int UserId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
         public Nullable<int> RoleID { get; set; }
         public string ContactInfo { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
     }
 }

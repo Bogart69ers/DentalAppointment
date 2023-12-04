@@ -27,10 +27,7 @@ namespace DentalAppointment.Forms
         private void Form_Admin_Load(object sender, EventArgs e)
         {
             loadCBRole();
-            // TODO: This line of code loads data into the 'dentalAppointmentDataSet.USER_INFORMATION' table. You can move, or remove it, as needed.
-            this.uSER_INFORMATIONTableAdapter.Fill(this.dentalAppointmentDataSet.USER_INFORMATION);
-            // TODO: This line of code loads data into the 'dentalAppointmentDataSet.USER_ACCOUNT' table. You can move, or remove it, as needed.
-            this.uSER_ACCOUNTTableAdapter.Fill(this.dentalAppointmentDataSet.USER_ACCOUNT);
+         
             Repo = new UserRepo();
             loadUser();
         }
@@ -263,7 +260,7 @@ namespace DentalAppointment.Forms
 
         private void loadCBRole()
         {
-            using (var db = new AppointmentSysEnt()) {
+            using (var db = new DentalAppointmentSystemEntity()) {
 
                 listRole = db.Roles.ToList();
 
@@ -305,6 +302,11 @@ namespace DentalAppointment.Forms
         {
             new Form_Landing().Show();
             this.Hide();
+        }
+
+        private void CBRole_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

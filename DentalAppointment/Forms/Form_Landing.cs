@@ -65,5 +65,27 @@ namespace DentalAppointment.Forms
         {
 
         }
+
+        private void tbApFirstName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SidebarMenu_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void bunifuButton1_Click_1(object sender, EventArgs e)
+        {
+            new Form_Appointment().Show();
+            this.Hide();
+        }
+
+        private void BTbookappointment_Click(object sender, EventArgs e)
+        {
+            new Form_Appointment().Show();
+            this.Hide();
+        }
     }
 }

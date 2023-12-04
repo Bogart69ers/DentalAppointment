@@ -112,16 +112,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DentalAppointmentDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DentalAppointmentDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Form_Admin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Form_Admin.Designer.cs">
       <DependentUpon>Form_Admin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form_Appointment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form_Appointment.Designer.cs">
+      <DependentUpon>Form_Appointment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form_Appointmentform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form_Appointmentform.Designer.cs">
+      <DependentUpon>Form_Appointmentform.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Form_Dentist.cs">
       <SubType>Form</SubType>
@@ -147,42 +154,63 @@
     <Compile Include="Forms\Form_Landing.Designer.cs">
       <DependentUpon>Form_Landing.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\UserControlBlank.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UserControlBlank.Designer.cs">
+      <DependentUpon>UserControlBlank.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserControlDays.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UserControlDays.Designer.cs">
+      <DependentUpon>UserControlDays.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Appointment.cs">
-      <DependentUpon>DentalAppointment.tt</DependentUpon>
+      <DependentUpon>DentalAppointmentSystem.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repository\DentalAppointment.Context.cs">
+    <Compile Include="Repository\DentalAppointmentSystem.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DentalAppointment.Context.tt</DependentUpon>
+      <DependentUpon>DentalAppointmentSystem.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repository\DentalAppointment.cs">
+    <Compile Include="Repository\DentalAppointmentSystem.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DentalAppointment.tt</DependentUpon>
+      <DependentUpon>DentalAppointmentSystem.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repository\DentalAppointment.Designer.cs">
+    <Compile Include="Repository\DentalAppointmentSystem.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DentalAppointment.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Repository\Dentist.cs">
-      <DependentUpon>DentalAppointment.tt</DependentUpon>
+      <DependentUpon>DentalAppointmentSystem.edmx</DependentUpon>
     </Compile>
     <Compile Include="Repository\Patient.cs">
-      <DependentUpon>DentalAppointment.tt</DependentUpon>
+      <DependentUpon>DentalAppointmentSystem.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\Role.cs">
-      <DependentUpon>DentalAppointment.tt</DependentUpon>
+      <DependentUpon>DentalAppointmentSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Service.cs">
+      <DependentUpon>DentalAppointmentSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Sex.cs">
+      <DependentUpon>DentalAppointmentSystem.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\UserAccount.cs">
-      <DependentUpon>DentalAppointment.tt</DependentUpon>
+      <DependentUpon>DentalAppointmentSystem.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\UserRepo.cs" />
     <Compile Include="Utils\Database.cs" />
     <EmbeddedResource Include="Forms\Form_Admin.resx">
       <DependentUpon>Form_Admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form_Appointment.resx">
+      <DependentUpon>Form_Appointment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form_Appointmentform.resx">
+      <DependentUpon>Form_Appointmentform.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form_Dentist.resx">
       <DependentUpon>Form_Dentist.cs</DependentUpon>
@@ -196,22 +224,17 @@
     <EmbeddedResource Include="Forms\Form_Landing.resx">
       <DependentUpon>Form_Landing.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserControlBlank.resx">
+      <DependentUpon>UserControlBlank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserControlDays.resx">
+      <DependentUpon>UserControlDays.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <None Include="DentalAppointmentDataSet.xsc">
-      <DependentUpon>DentalAppointmentDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="DentalAppointmentDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DentalAppointmentDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DentalAppointmentDataSet.xss">
-      <DependentUpon>DentalAppointmentDataSet.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -222,12 +245,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EntityDeploy Include="Repository\DentalAppointment.edmx">
+    <EntityDeploy Include="Repository\DentalAppointmentSystem.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DentalAppointment.Designer.cs</LastGenOutput>
+      <LastGenOutput>DentalAppointmentSystem.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Repository\DentalAppointment.edmx.diagram">
-      <DependentUpon>DentalAppointment.edmx</DependentUpon>
+    <None Include="Repository\DentalAppointmentSystem.edmx.diagram">
+      <DependentUpon>DentalAppointmentSystem.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -237,6 +260,16 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Repository\DentalAppointmentSystem.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DentalAppointmentSystem.edmx</DependentUpon>
+      <LastGenOutput>DentalAppointmentSystem.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Repository\DentalAppointmentSystem.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DentalAppointmentSystem.edmx</DependentUpon>
+      <LastGenOutput>DentalAppointmentSystem.cs</LastGenOutput>
+    </Content>
     <None Include="Pictures\Home.png" />
     <None Include="Pictures\Logo 2.png" />
     <None Include="Pictures\Logout.png" />
@@ -246,16 +279,6 @@
     <None Include="Pictures\Login.png" />
     <None Include="Pictures\Logo.png" />
     <None Include="Pictures\Menu.png" />
-    <Content Include="Repository\DentalAppointment.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DentalAppointment.edmx</DependentUpon>
-      <LastGenOutput>DentalAppointment.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Repository\DentalAppointment.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DentalAppointment.edmx</DependentUpon>
-      <LastGenOutput>DentalAppointment.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

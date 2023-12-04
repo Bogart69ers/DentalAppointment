@@ -12,13 +12,10 @@ namespace DentalAppointment.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class Patient
+    public partial class Sex
     {
-        public int PatientId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string ContactNumber { get; set; }
-        public string Sex { get; set; }
-        public string AppointmentPurpose { get; set; }
+        public int SexId { get; set; }
+        public string SexName { get; set; }
+        public string SexDescription { get; set; }
     }
 }

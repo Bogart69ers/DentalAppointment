@@ -14,14 +14,10 @@ namespace DentalAppointment.Repository
     
     public partial class Appointment
     {
-        public int AppointmentID { get; set; }
-        public Nullable<System.DateTime> DateAndTime { get; set; }
+        public int AppointmentId { get; set; }
+        public Nullable<System.DateTime> DateandTime { get; set; }
         public Nullable<int> PatientID { get; set; }
-        public Nullable<int> DentistID { get; set; }
-        public string PurposeDescription { get; set; }
+        public string AppointmentPurpose { get; set; }
         public string Status { get; set; }
-    
-        public virtual Dentist Dentist { get; set; }
-        public virtual Patient Patient { get; set; }
     }
 }

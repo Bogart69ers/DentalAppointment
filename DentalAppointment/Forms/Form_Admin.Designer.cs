@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Admin));
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
@@ -51,7 +52,6 @@
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties18 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties19 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties20 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Admin));
             this.userlabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.BTRegister = new System.Windows.Forms.Button();
@@ -62,11 +62,6 @@
             this.RoleLabel = new System.Windows.Forms.Label();
             this.ContactLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.uSERINFORMATIONBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dentalAppointmentDataSet = new DentalAppointment.DentalAppointmentDataSet();
-            this.uSER_INFORMATIONTableAdapter = new DentalAppointment.DentalAppointmentDataSetTableAdapters.USER_INFORMATIONTableAdapter();
-            this.uSER_ACCOUNTTableAdapter = new DentalAppointment.DentalAppointmentDataSetTableAdapters.USER_ACCOUNTTableAdapter();
-            this.uSERACCOUNTBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.errorProvider6 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider5 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider4 = new System.Windows.Forms.ErrorProvider(this.components);
@@ -82,18 +77,15 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.logoutBt = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.SidebarT = new System.Windows.Forms.Timer(this.components);
+            this.CBRole = new Bunifu.UI.WinForms.BunifuDropdown();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.TBPass = new Bunifu.UI.WinForms.BunifuTextBox();
             this.TBUser = new Bunifu.UI.WinForms.BunifuTextBox();
             this.TBFName = new Bunifu.UI.WinForms.BunifuTextBox();
             this.TBContact = new Bunifu.UI.WinForms.BunifuTextBox();
             this.TBLName = new Bunifu.UI.WinForms.BunifuTextBox();
-            this.CBRole = new Bunifu.UI.WinForms.BunifuDropdown();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_admin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uSERINFORMATIONBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dentalAppointmentDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uSERACCOUNTBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider4)).BeginInit();
@@ -208,29 +200,6 @@
             this.label2.Size = new System.Drawing.Size(80, 20);
             this.label2.TabIndex = 13;
             this.label2.Text = "First Name";
-            // 
-            // uSERINFORMATIONBindingSource
-            // 
-            this.uSERINFORMATIONBindingSource.DataMember = "USER_INFORMATION";
-            this.uSERINFORMATIONBindingSource.DataSource = this.dentalAppointmentDataSet;
-            // 
-            // dentalAppointmentDataSet
-            // 
-            this.dentalAppointmentDataSet.DataSetName = "DentalAppointmentDataSet";
-            this.dentalAppointmentDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // uSER_INFORMATIONTableAdapter
-            // 
-            this.uSER_INFORMATIONTableAdapter.ClearBeforeFill = true;
-            // 
-            // uSER_ACCOUNTTableAdapter
-            // 
-            this.uSER_ACCOUNTTableAdapter.ClearBeforeFill = true;
-            // 
-            // uSERACCOUNTBindingSource
-            // 
-            this.uSERACCOUNTBindingSource.DataMember = "USER_ACCOUNT";
-            this.uSERACCOUNTBindingSource.DataSource = this.dentalAppointmentDataSet;
             // 
             // errorProvider6
             // 
@@ -508,6 +477,59 @@
             // 
             this.SidebarT.Interval = 1;
             this.SidebarT.Tick += new System.EventHandler(this.AdminSideT);
+            // 
+            // CBRole
+            // 
+            this.CBRole.BackColor = System.Drawing.Color.Transparent;
+            this.CBRole.BackgroundColor = System.Drawing.Color.White;
+            this.CBRole.BorderColor = System.Drawing.Color.Silver;
+            this.CBRole.BorderRadius = 5;
+            this.CBRole.Color = System.Drawing.Color.Silver;
+            this.CBRole.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
+            this.CBRole.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.CBRole.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.CBRole.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.CBRole.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.CBRole.DisabledIndicatorColor = System.Drawing.Color.DarkGray;
+            this.CBRole.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.CBRole.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thin;
+            this.CBRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBRole.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
+            this.CBRole.FillDropDown = true;
+            this.CBRole.FillIndicator = false;
+            this.CBRole.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CBRole.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CBRole.ForeColor = System.Drawing.Color.Black;
+            this.CBRole.FormattingEnabled = true;
+            this.CBRole.Icon = null;
+            this.CBRole.IndicatorAlignment = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
+            this.CBRole.IndicatorColor = System.Drawing.Color.Gray;
+            this.CBRole.IndicatorLocation = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
+            this.CBRole.ItemBackColor = System.Drawing.Color.White;
+            this.CBRole.ItemBorderColor = System.Drawing.Color.White;
+            this.CBRole.ItemForeColor = System.Drawing.Color.Black;
+            this.CBRole.ItemHeight = 38;
+            this.CBRole.ItemHighLightColor = System.Drawing.Color.DodgerBlue;
+            this.CBRole.ItemHighLightForeColor = System.Drawing.Color.White;
+            this.CBRole.ItemTopMargin = 3;
+            this.CBRole.Location = new System.Drawing.Point(500, 182);
+            this.CBRole.Name = "CBRole";
+            this.CBRole.Size = new System.Drawing.Size(361, 44);
+            this.CBRole.TabIndex = 19;
+            this.CBRole.Text = null;
+            this.CBRole.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
+            this.CBRole.TextLeftMargin = 5;
+            this.CBRole.SelectedIndexChanged += new System.EventHandler(this.CBRole_SelectedIndexChanged_1);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(1093, 11);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(125, 104);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 23;
+            this.pictureBox2.TabStop = false;
             // 
             // TBPass
             // 
@@ -885,57 +907,6 @@
             this.TBLName.UseSystemPasswordChar = false;
             this.TBLName.WordWrap = true;
             // 
-            // CBRole
-            // 
-            this.CBRole.BackColor = System.Drawing.Color.Transparent;
-            this.CBRole.BackgroundColor = System.Drawing.Color.White;
-            this.CBRole.BorderColor = System.Drawing.Color.Silver;
-            this.CBRole.BorderRadius = 5;
-            this.CBRole.Color = System.Drawing.Color.Silver;
-            this.CBRole.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
-            this.CBRole.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.CBRole.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.CBRole.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.CBRole.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.CBRole.DisabledIndicatorColor = System.Drawing.Color.DarkGray;
-            this.CBRole.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.CBRole.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thin;
-            this.CBRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CBRole.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
-            this.CBRole.FillDropDown = true;
-            this.CBRole.FillIndicator = false;
-            this.CBRole.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CBRole.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CBRole.ForeColor = System.Drawing.Color.Black;
-            this.CBRole.FormattingEnabled = true;
-            this.CBRole.Icon = null;
-            this.CBRole.IndicatorAlignment = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
-            this.CBRole.IndicatorColor = System.Drawing.Color.Gray;
-            this.CBRole.IndicatorLocation = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
-            this.CBRole.ItemBackColor = System.Drawing.Color.White;
-            this.CBRole.ItemBorderColor = System.Drawing.Color.White;
-            this.CBRole.ItemForeColor = System.Drawing.Color.Black;
-            this.CBRole.ItemHeight = 38;
-            this.CBRole.ItemHighLightColor = System.Drawing.Color.DodgerBlue;
-            this.CBRole.ItemHighLightForeColor = System.Drawing.Color.White;
-            this.CBRole.ItemTopMargin = 3;
-            this.CBRole.Location = new System.Drawing.Point(500, 182);
-            this.CBRole.Name = "CBRole";
-            this.CBRole.Size = new System.Drawing.Size(361, 44);
-            this.CBRole.TabIndex = 19;
-            this.CBRole.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
-            this.CBRole.TextLeftMargin = 5;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(1093, 11);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(125, 104);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 23;
-            this.pictureBox2.TabStop = false;
-            // 
             // Form_Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -970,9 +941,6 @@
             this.Load += new System.EventHandler(this.Form_Admin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_admin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uSERINFORMATIONBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dentalAppointmentDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uSERACCOUNTBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider4)).EndInit();
@@ -1006,11 +974,6 @@
         private Bunifu.UI.WinForms.BunifuTextBox TBFName;
         private Bunifu.UI.WinForms.BunifuTextBox TBUser;
         private Bunifu.UI.WinForms.BunifuTextBox TBPass;
-        private System.Windows.Forms.BindingSource uSERINFORMATIONBindingSource;
-        private DentalAppointmentDataSetTableAdapters.USER_INFORMATIONTableAdapter uSER_INFORMATIONTableAdapter;
-        private DentalAppointmentDataSet dentalAppointmentDataSet;
-        private DentalAppointmentDataSetTableAdapters.USER_ACCOUNTTableAdapter uSER_ACCOUNTTableAdapter;
-        private System.Windows.Forms.BindingSource uSERACCOUNTBindingSource;
         private System.Windows.Forms.ErrorProvider errorProvider6;
         private System.Windows.Forms.ErrorProvider errorProvider5;
         private System.Windows.Forms.ErrorProvider errorProvider4;

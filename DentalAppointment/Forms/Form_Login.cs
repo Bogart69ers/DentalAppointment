@@ -60,11 +60,11 @@ namespace DentalAppointment
                             new Form_Dentist().Show();
                             this.Hide();
                             break;
-                        case Roles.Patient:
+                        /*case Roles.Patient:
                             // Load Admin Dashboard
                             new Form_Landing().Show();
                             this.Hide();
-                            break;
+                            break;*/
                         default:
                             MessageBox.Show("User has no role!");
                             break;
