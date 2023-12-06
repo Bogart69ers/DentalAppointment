@@ -16,7 +16,7 @@ namespace DentalAppointment.Forms
     public partial class Form_Appointment : Form
     {
         int month, year;
-
+        bool sidebarExpand;
         public static int static_month, static_year;
         public Form_Appointment()
         {
@@ -75,6 +75,31 @@ namespace DentalAppointment.Forms
                 dayContainer.Controls.Add(ucdays);
             }
 
+        }
+        private void menuButton_Click(object sender, EventArgs e)
+        {
+            SidebarT.Start();
+        }
+        private void AppointmentT(object sender, EventArgs e)
+        {
+            if (sidebarExpand)
+            {
+                SidebarMenu2.Width -= 10;
+                if (SidebarMenu2.Width == SidebarMenu2.MinimumSize.Width)
+                {
+                    sidebarExpand = false;
+                    SidebarT.Stop();
+                }
+            }
+            else
+            {
+                SidebarMenu2.Width += 10;
+                if (SidebarMenu2.Width == SidebarMenu2.MaximumSize.Width)
+                {
+                    sidebarExpand = true;
+                    SidebarT.Stop();
+                }
+            }
         }
 
         private void BTPrevious_Click(object sender, EventArgs e)

@@ -66,6 +66,7 @@
             this.SidebarMenu.Name = "SidebarMenu";
             this.SidebarMenu.Size = new System.Drawing.Size(65, 703);
             this.SidebarMenu.TabIndex = 1;
+            this.SidebarMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.SidebarMenu_Paint);
             // 
             // panel1
             // 

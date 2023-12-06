@@ -56,5 +56,10 @@ namespace DentalAppointment.Forms
             new Form_Dentist_Appointments().Show();
             this.Hide();
         }
+
+        private void SidebarMenu_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
