@@ -10,10 +10,12 @@
             <PropertyRef Name="AppointmentId" />
           </Key>
           <Property Name="AppointmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="DateandTime" Type="datetime" />
-          <Property Name="PatientID" Type="int" />
-          <Property Name="AppointmentPurpose" Type="nvarchar(max)" />
-          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="PatientId" Type="int" />
+          <Property Name="PatientName" Type="nvarchar" MaxLength="200" />
+          <Property Name="AppointmentPurpose" Type="varchar" MaxLength="255" />
+          <Property Name="DateAndTime" Type="nvarchar" MaxLength="200" />
+          <Property Name="Status" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Patient">
           <Key>
@@ -25,6 +27,7 @@
           <Property Name="ContactNumber" Type="varchar" MaxLength="255" />
           <Property Name="Sex" Type="varchar" MaxLength="10" />
           <Property Name="AppointmentPurpose" Type="varchar" MaxLength="255" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -50,6 +53,14 @@
           <Property Name="SexName" Type="nvarchar" MaxLength="50" />
           <Property Name="SexDescription" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="TimeSet">
+          <Key>
+            <PropertyRef Name="TimeId" />
+          </Key>
+          <Property Name="TimeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TimeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="TimeDescription" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="UserAccount">
           <Key>
             <PropertyRef Name="UserId" />
@@ -62,28 +73,35 @@
           <Property Name="RoleID" Type="int" />
           <Property Name="ContactInfo" Type="nvarchar" MaxLength="100" />
         </EntityType>
+        <Association Name="FK__Appointme__Patie__571DF1D5">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+          <End Role="Appointments" Type="Self.Appointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="PatientId" />
+            </Principal>
+            <Dependent Role="Appointments">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DentalAppointmentSystemModelStoreContainer">
           <EntitySet Name="Appointments" EntityType="Self.Appointments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sex" EntityType="Self.Sex" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TimeSet" EntityType="Self.TimeSet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserAccount" EntityType="Self.UserAccount" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Appointme__Patie__571DF1D5" Association="Self.FK__Appointme__Patie__571DF1D5">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="Appointments" EntitySet="Appointments" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DentalAppointmentSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Appointment">
-          <Key>
-            <PropertyRef Name="AppointmentId" />
-          </Key>
-          <Property Name="AppointmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DateandTime" Type="DateTime" Precision="3" />
-          <Property Name="PatientID" Type="Int32" />
-          <Property Name="AppointmentPurpose" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="Patient">
           <Key>
             <PropertyRef Name="PatientId" />
@@ -94,6 +112,8 @@
           <Property Name="ContactNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Sex" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="AppointmentPurpose" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Appointments1" Relationship="DentalAppointmentSystemModel.FK__Appointme__Patie__571DF1D5" FromRole="Patient" ToRole="Appointment1" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -124,12 +144,17 @@
           <Property Name="ContactInfo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityContainer Name="DentalAppointmentSystemEntity" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Appointments" EntityType="Self.Appointment" />
           <EntitySet Name="Patients" EntityType="Self.Patient" />
           <EntitySet Name="Roles" EntityType="Self.Role" />
           <EntitySet Name="Services" EntityType="Self.Service" />
           <EntitySet Name="UserAccounts" EntityType="Self.UserAccount" />
           <EntitySet Name="Sexes" EntityType="DentalAppointmentSystemModel.Sex" />
+          <EntitySet Name="TimeSets" EntityType="DentalAppointmentSystemModel.TimeSet" />
+          <EntitySet Name="Appointments" EntityType="DentalAppointmentSystemModel.Appointment" />
+          <AssociationSet Name="FK__Appointme__Patie__571DF1D5" Association="DentalAppointmentSystemModel.FK__Appointme__Patie__571DF1D5">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="Appointment1" EntitySet="Appointments" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Sex">
           <Key>
@@ -139,26 +164,49 @@
           <Property Name="SexName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SexDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="TimeSet">
+          <Key>
+            <PropertyRef Name="TimeId" />
+          </Key>
+          <Property Name="TimeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TimeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TimeDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Appointment">
+          <Key>
+            <PropertyRef Name="AppointmentId" />
+          </Key>
+          <Property Name="AppointmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientId" Type="Int32" />
+          <Property Name="PatientName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="AppointmentPurpose" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DateAndTime" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Patient" Relationship="DentalAppointmentSystemModel.FK__Appointme__Patie__571DF1D5" FromRole="Appointment1" ToRole="Patient" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK__Appointme__Patie__571DF1D5">
+          <End Type="DentalAppointmentSystemModel.Patient" Role="Patient" Multiplicity="0..1" />
+          <End Type="DentalAppointmentSystemModel.Appointment" Role="Appointment1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="PatientId" />
+            </Principal>
+            <Dependent Role="Appointment1">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DentalAppointmentSystemModelStoreContainer" CdmEntityContainer="DentalAppointmentSystemEntity">
-          <EntitySetMapping Name="Appointments">
-            <EntityTypeMapping TypeName="DentalAppointmentSystemModel.Appointment">
-              <MappingFragment StoreEntitySet="Appointments">
-                <ScalarProperty Name="AppointmentId" ColumnName="AppointmentId" />
-                <ScalarProperty Name="DateandTime" ColumnName="DateandTime" />
-                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
-                <ScalarProperty Name="AppointmentPurpose" ColumnName="AppointmentPurpose" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Patients">
             <EntityTypeMapping TypeName="DentalAppointmentSystemModel.Patient">
               <MappingFragment StoreEntitySet="Patient">
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="PatientId" ColumnName="PatientId" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
@@ -205,6 +253,28 @@
                 <ScalarProperty Name="SexDescription" ColumnName="SexDescription" />
                 <ScalarProperty Name="SexName" ColumnName="SexName" />
                 <ScalarProperty Name="SexId" ColumnName="SexId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TimeSets">
+            <EntityTypeMapping TypeName="DentalAppointmentSystemModel.TimeSet">
+              <MappingFragment StoreEntitySet="TimeSet">
+                <ScalarProperty Name="TimeDescription" ColumnName="TimeDescription" />
+                <ScalarProperty Name="TimeName" ColumnName="TimeName" />
+                <ScalarProperty Name="TimeId" ColumnName="TimeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Appointments">
+            <EntityTypeMapping TypeName="DentalAppointmentSystemModel.Appointment">
+              <MappingFragment StoreEntitySet="Appointments">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DateAndTime" ColumnName="DateAndTime" />
+                <ScalarProperty Name="AppointmentPurpose" ColumnName="AppointmentPurpose" />
+                <ScalarProperty Name="PatientName" ColumnName="PatientName" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="AppointmentId" ColumnName="AppointmentId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

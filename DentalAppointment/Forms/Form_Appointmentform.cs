@@ -17,6 +17,8 @@ namespace DentalAppointment.Forms
     {
         public List<Service> listServices;
         public List<Sex> listSex;
+        public List<TimeSet> listTimeSets;
+
         UserRepo Repo;
         
         public Form_Appointmentform()
@@ -29,6 +31,8 @@ namespace DentalAppointment.Forms
         {
             loadcbService();
             loadcbSex();
+            loadCbTime();
+           
             Repo = new UserRepo();
             TbDate.Text =Form_Appointment.static_month+"/"+ UserControlDays.static_day + "/" + Form_Appointment.static_year;
         }
@@ -57,6 +61,21 @@ namespace DentalAppointment.Forms
                 cbSex.DataSource = listSex;
             }
         }
+
+        private void loadCbTime()
+        {
+            using(var db = new DentalAppointmentSystemEntity())
+            {
+                listTimeSets = db.TimeSets.ToList();
+
+                CbTime.DisplayMember = "TimeName";
+                CbTime.ValueMember = "TimeDiscription";
+                CbTime.DataSource = listTimeSets;
+                
+            }
+        }
+
+
         private void BTbookapp_Click(object sender, EventArgs e)
         {
             String strOutputMsg = "";
@@ -64,7 +83,9 @@ namespace DentalAppointment.Forms
             String LastName = tbApLastName.Text;
             String ContactNumber = tbApContact.Text;
             String Sex = cbSex.Text;
-            String AppointmentPurpose = cbService.Text;     
+            String AppointmentPurpose = cbService.Text;
+            String Email = TbEmail.Text;
+            String Time = CbTime.Text;
 
             if (String.IsNullOrEmpty(FirstName))
             {
@@ -100,8 +121,22 @@ namespace DentalAppointment.Forms
                 errorProvider5.SetError(cbService, "Empty Field!");
                 return;
             }
+            else
 
-         
+            if (String.IsNullOrEmpty(Email))
+            {
+                errorProvider6.SetError(TbEmail, "Empty Field");
+                return;
+            }
+            else
+
+            if (String.IsNullOrEmpty(Time))
+            {
+                errorProvider7.SetError(CbTime, "Empty Field");
+                return;
+            }
+
+
             // Create new object of USER_ACCOUNT
             Patient newPatient = new Patient();
             newPatient.FirstName = tbApFirstName.Text;
@@ -109,9 +144,18 @@ namespace DentalAppointment.Forms
             newPatient.ContactNumber = tbApContact.Text;
             newPatient.Sex = cbSex.Text;
             newPatient.AppointmentPurpose = cbService.Text;
-            
+            newPatient.Email = TbEmail.Text;
 
-            ErrorCode retValue = Repo.NewPatient(newPatient, ref strOutputMsg);
+            //Create new Appointment
+            Appointment newAppointment = new Appointment();
+            //Appointment.PatientId = Patient.PatientId;
+            newAppointment.PatientName = tbApFirstName.Text + " " + tbApLastName.Text;
+            newAppointment.AppointmentPurpose = cbService.Text;
+            newAppointment.DateAndTime = TbDate.Text + " " + CbTime.Text;
+            newAppointment.Email = TbEmail.Text;
+            newAppointment.Status = "Pending";
+
+            ErrorCode retValue = Repo.NewPatient(newPatient, newAppointment, ref strOutputMsg);
             if (retValue == ErrorCode.Success)
             {
                 //Clear the errors
@@ -125,6 +169,7 @@ namespace DentalAppointment.Forms
                 cbService.ResetText();
                 cbSex.ResetText();
                 TbDate.Clear();
+                TbEmail.Clear();
 
             }
             else
@@ -135,6 +180,16 @@ namespace DentalAppointment.Forms
             this.Hide();
 
 
+
+        }
+
+        private void TbEmail_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CbTime_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }

@@ -135,12 +135,12 @@ namespace DentalAppointment.Forms
             try
             {
                 userSelectedId = (Int32)dgv_admin.Rows[e.RowIndex].Cells[0].Value;
-                TBUser.Text = dgv_admin.Rows[e.RowIndex].Cells[1].Value as String;
-                TBPass.Text = dgv_admin.Rows[e.RowIndex].Cells[2].Value as String;
-                TBFName.Text = dgv_admin.Rows[e.RowIndex].Cells[5].Value as String;
-                TBLName.Text = dgv_admin.Rows[e.RowIndex].Cells[6].Value as String;
-                TBContact.Text = dgv_admin.Rows[e.RowIndex].Cells[4].Value as String;
-                CBRole.Text = dgv_admin.Rows[e.RowIndex].Cells[3].Value as String;
+                TBUser.Text = dgv_admin.Rows[e.RowIndex].Cells[3].Value as String;
+                TBPass.Text = dgv_admin.Rows[e.RowIndex].Cells[4].Value as String;
+                TBFName.Text = dgv_admin.Rows[e.RowIndex].Cells[1].Value as String;
+                TBLName.Text = dgv_admin.Rows[e.RowIndex].Cells[2].Value as String;
+                TBContact.Text = dgv_admin.Rows[e.RowIndex].Cells[6].Value as String;
+                CBRole.Text = dgv_admin.Rows[e.RowIndex].Cells[5].Value as String;
 
 
             }

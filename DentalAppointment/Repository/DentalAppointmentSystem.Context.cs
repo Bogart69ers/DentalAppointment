@@ -25,11 +25,12 @@ namespace DentalAppointment.Repository
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Appointment> Appointments { get; set; }
         public virtual DbSet<Patient> Patients { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Service> Services { get; set; }
         public virtual DbSet<UserAccount> UserAccounts { get; set; }
         public virtual DbSet<Sex> Sexes { get; set; }
+        public virtual DbSet<TimeSet> TimeSets { get; set; }
+        public virtual DbSet<Appointment> Appointments { get; set; }
     }
 }

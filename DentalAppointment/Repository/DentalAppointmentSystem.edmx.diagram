@@ -5,12 +5,14 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="20570726f42d469b8bc8f33029131953" Name="Diagram1">
-        <EntityTypeShape EntityType="DentalAppointmentSystemModel.Appointment" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DentalAppointmentSystemModel.Patient" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DentalAppointmentSystemModel.Role" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DentalAppointmentSystemModel.Service" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DentalAppointmentSystemModel.UserAccount" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DentalAppointmentSystemModel.Sex" Width="1.5" PointX="5.375" PointY="4.75" />
+        <EntityTypeShape EntityType="DentalAppointmentSystemModel.Sex" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DentalAppointmentSystemModel.TimeSet" Width="1.5" PointX="0.75" PointY="6.5" />
+        <EntityTypeShape EntityType="DentalAppointmentSystemModel.Appointment" Width="1.5" PointX="0.75" PointY="0.75" />
+        <AssociationConnector Association="DentalAppointmentSystemModel.FK__Appointme__Patie__571DF1D5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

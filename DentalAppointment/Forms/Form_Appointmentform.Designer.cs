@@ -47,6 +47,10 @@
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties15 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties16 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties17 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties18 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties19 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties20 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             this.bunifuLabel13 = new Bunifu.UI.WinForms.BunifuLabel();
             this.cbSex = new Bunifu.UI.WinForms.BunifuDropdown();
             this.bunifuLabel12 = new Bunifu.UI.WinForms.BunifuLabel();
@@ -62,16 +66,24 @@
             this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
             this.BTbookapp = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.TbEmail = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
+            this.CbTime = new Bunifu.UI.WinForms.BunifuDropdown();
+            this.bunifuLabel3 = new Bunifu.UI.WinForms.BunifuLabel();
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider3 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider4 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider5 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider6 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider7 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider7)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuLabel13
@@ -126,7 +138,7 @@
             this.cbSex.Location = new System.Drawing.Point(355, 127);
             this.cbSex.Name = "cbSex";
             this.cbSex.Size = new System.Drawing.Size(260, 36);
-            this.cbSex.TabIndex = 25;
+            this.cbSex.TabIndex = 4;
             this.cbSex.Text = null;
             this.cbSex.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
             this.cbSex.TextLeftMargin = 5;
@@ -182,7 +194,7 @@
             this.bunifuLabel9.AutoEllipsis = false;
             this.bunifuLabel9.CursorType = null;
             this.bunifuLabel9.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.bunifuLabel9.Location = new System.Drawing.Point(78, 175);
+            this.bunifuLabel9.Location = new System.Drawing.Point(80, 181);
             this.bunifuLabel9.Name = "bunifuLabel9";
             this.bunifuLabel9.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel9.Size = new System.Drawing.Size(102, 17);
@@ -228,7 +240,7 @@
             this.cbService.Location = new System.Drawing.Point(76, 201);
             this.cbService.Name = "cbService";
             this.cbService.Size = new System.Drawing.Size(260, 36);
-            this.cbService.TabIndex = 26;
+            this.cbService.TabIndex = 5;
             this.cbService.Text = null;
             this.cbService.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
             this.cbService.TextLeftMargin = 5;
@@ -236,7 +248,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(555, 283);
+            this.pictureBox2.Location = new System.Drawing.Point(577, 367);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(107, 93);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -308,7 +320,7 @@
             this.tbApContact.ShortcutsEnabled = true;
             this.tbApContact.Size = new System.Drawing.Size(260, 37);
             this.tbApContact.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.tbApContact.TabIndex = 24;
+            this.tbApContact.TabIndex = 3;
             this.tbApContact.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.tbApContact.TextMarginBottom = 0;
             this.tbApContact.TextMarginLeft = 3;
@@ -382,7 +394,7 @@
             this.tbApLastName.ShortcutsEnabled = true;
             this.tbApLastName.Size = new System.Drawing.Size(260, 37);
             this.tbApLastName.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.tbApLastName.TabIndex = 23;
+            this.tbApLastName.TabIndex = 2;
             this.tbApLastName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.tbApLastName.TextMarginBottom = 0;
             this.tbApLastName.TextMarginLeft = 3;
@@ -456,7 +468,7 @@
             this.tbApFirstName.ShortcutsEnabled = true;
             this.tbApFirstName.Size = new System.Drawing.Size(260, 37);
             this.tbApFirstName.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.tbApFirstName.TabIndex = 22;
+            this.tbApFirstName.TabIndex = 1;
             this.tbApFirstName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.tbApFirstName.TextMarginBottom = 0;
             this.tbApFirstName.TextMarginLeft = 3;
@@ -493,7 +505,7 @@
             this.TbDate.IconRight = null;
             this.TbDate.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.TbDate.Lines = new string[0];
-            this.TbDate.Location = new System.Drawing.Point(355, 200);
+            this.TbDate.Location = new System.Drawing.Point(355, 269);
             this.TbDate.MaxLength = 32767;
             this.TbDate.MinimumSize = new System.Drawing.Size(1, 1);
             this.TbDate.Modified = false;
@@ -531,7 +543,7 @@
             this.TbDate.ShortcutsEnabled = true;
             this.TbDate.Size = new System.Drawing.Size(260, 37);
             this.TbDate.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.TbDate.TabIndex = 34;
+            this.TbDate.TabIndex = 8;
             this.TbDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.TbDate.TextMarginBottom = 0;
             this.TbDate.TextMarginLeft = 3;
@@ -546,7 +558,7 @@
             this.bunifuLabel1.AutoEllipsis = false;
             this.bunifuLabel1.CursorType = null;
             this.bunifuLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.bunifuLabel1.Location = new System.Drawing.Point(359, 179);
+            this.bunifuLabel1.Location = new System.Drawing.Point(359, 250);
             this.bunifuLabel1.Name = "bunifuLabel1";
             this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel1.Size = new System.Drawing.Size(28, 17);
@@ -602,7 +614,7 @@
             this.BTbookapp.IdleIconLeftImage = null;
             this.BTbookapp.IdleIconRightImage = null;
             this.BTbookapp.IndicateFocus = false;
-            this.BTbookapp.Location = new System.Drawing.Point(76, 283);
+            this.BTbookapp.Location = new System.Drawing.Point(80, 352);
             this.BTbookapp.Name = "BTbookapp";
             this.BTbookapp.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.BTbookapp.OnDisabledState.BorderRadius = 40;
@@ -637,7 +649,7 @@
             this.BTbookapp.OnPressedState.IconLeftImage = null;
             this.BTbookapp.OnPressedState.IconRightImage = null;
             this.BTbookapp.Size = new System.Drawing.Size(204, 52);
-            this.BTbookapp.TabIndex = 36;
+            this.BTbookapp.TabIndex = 9;
             this.BTbookapp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.BTbookapp.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.BTbookapp.TextMarginLeft = 0;
@@ -648,6 +660,154 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // TbEmail
+            // 
+            this.TbEmail.AcceptsReturn = false;
+            this.TbEmail.AcceptsTab = false;
+            this.TbEmail.AnimationSpeed = 200;
+            this.TbEmail.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.TbEmail.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.TbEmail.BackColor = System.Drawing.Color.Transparent;
+            this.TbEmail.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TbEmail.BackgroundImage")));
+            this.TbEmail.BorderColorActive = System.Drawing.Color.DodgerBlue;
+            this.TbEmail.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.TbEmail.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.TbEmail.BorderColorIdle = System.Drawing.Color.Silver;
+            this.TbEmail.BorderRadius = 10;
+            this.TbEmail.BorderThickness = 1;
+            this.TbEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TbEmail.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TbEmail.DefaultFont = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.TbEmail.DefaultText = "";
+            this.TbEmail.FillColor = System.Drawing.Color.White;
+            this.TbEmail.HideSelection = true;
+            this.TbEmail.IconLeft = null;
+            this.TbEmail.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
+            this.TbEmail.IconPadding = 10;
+            this.TbEmail.IconRight = null;
+            this.TbEmail.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
+            this.TbEmail.Lines = new string[0];
+            this.TbEmail.Location = new System.Drawing.Point(76, 269);
+            this.TbEmail.MaxLength = 32767;
+            this.TbEmail.MinimumSize = new System.Drawing.Size(1, 1);
+            this.TbEmail.Modified = false;
+            this.TbEmail.Multiline = false;
+            this.TbEmail.Name = "TbEmail";
+            stateProperties17.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties17.FillColor = System.Drawing.Color.Empty;
+            stateProperties17.ForeColor = System.Drawing.Color.Empty;
+            stateProperties17.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.TbEmail.OnActiveState = stateProperties17;
+            stateProperties18.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties18.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties18.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.TbEmail.OnDisabledState = stateProperties18;
+            stateProperties19.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties19.FillColor = System.Drawing.Color.Empty;
+            stateProperties19.ForeColor = System.Drawing.Color.Empty;
+            stateProperties19.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.TbEmail.OnHoverState = stateProperties19;
+            stateProperties20.BorderColor = System.Drawing.Color.Silver;
+            stateProperties20.FillColor = System.Drawing.Color.White;
+            stateProperties20.ForeColor = System.Drawing.Color.Empty;
+            stateProperties20.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.TbEmail.OnIdleState = stateProperties20;
+            this.TbEmail.Padding = new System.Windows.Forms.Padding(3);
+            this.TbEmail.PasswordChar = '\0';
+            this.TbEmail.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.TbEmail.PlaceholderText = "E-Mail";
+            this.TbEmail.ReadOnly = false;
+            this.TbEmail.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.TbEmail.SelectedText = "";
+            this.TbEmail.SelectionLength = 0;
+            this.TbEmail.SelectionStart = 0;
+            this.TbEmail.ShortcutsEnabled = true;
+            this.TbEmail.Size = new System.Drawing.Size(260, 37);
+            this.TbEmail.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
+            this.TbEmail.TabIndex = 7;
+            this.TbEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TbEmail.TextMarginBottom = 0;
+            this.TbEmail.TextMarginLeft = 3;
+            this.TbEmail.TextMarginTop = 0;
+            this.TbEmail.TextPlaceholder = "E-Mail";
+            this.TbEmail.UseSystemPasswordChar = false;
+            this.TbEmail.WordWrap = true;
+            this.TbEmail.TextChanged += new System.EventHandler(this.TbEmail_TextChanged);
+            // 
+            // bunifuLabel2
+            // 
+            this.bunifuLabel2.AllowParentOverrides = false;
+            this.bunifuLabel2.AutoEllipsis = false;
+            this.bunifuLabel2.CursorType = null;
+            this.bunifuLabel2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.bunifuLabel2.Location = new System.Drawing.Point(80, 250);
+            this.bunifuLabel2.Name = "bunifuLabel2";
+            this.bunifuLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bunifuLabel2.Size = new System.Drawing.Size(32, 17);
+            this.bunifuLabel2.TabIndex = 38;
+            this.bunifuLabel2.Text = "Email";
+            this.bunifuLabel2.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.bunifuLabel2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // CbTime
+            // 
+            this.CbTime.BackColor = System.Drawing.Color.Transparent;
+            this.CbTime.BackgroundColor = System.Drawing.Color.White;
+            this.CbTime.BorderColor = System.Drawing.Color.Silver;
+            this.CbTime.BorderRadius = 5;
+            this.CbTime.Color = System.Drawing.Color.Silver;
+            this.CbTime.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
+            this.CbTime.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.CbTime.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.CbTime.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.CbTime.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.CbTime.DisabledIndicatorColor = System.Drawing.Color.DarkGray;
+            this.CbTime.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.CbTime.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thin;
+            this.CbTime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CbTime.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
+            this.CbTime.FillDropDown = true;
+            this.CbTime.FillIndicator = false;
+            this.CbTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CbTime.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CbTime.ForeColor = System.Drawing.Color.Black;
+            this.CbTime.FormattingEnabled = true;
+            this.CbTime.Icon = null;
+            this.CbTime.IndicatorAlignment = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
+            this.CbTime.IndicatorColor = System.Drawing.Color.Gray;
+            this.CbTime.IndicatorLocation = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
+            this.CbTime.ItemBackColor = System.Drawing.Color.White;
+            this.CbTime.ItemBorderColor = System.Drawing.Color.White;
+            this.CbTime.ItemForeColor = System.Drawing.Color.Black;
+            this.CbTime.ItemHeight = 30;
+            this.CbTime.ItemHighLightColor = System.Drawing.Color.DodgerBlue;
+            this.CbTime.ItemHighLightForeColor = System.Drawing.Color.White;
+            this.CbTime.ItemTopMargin = 3;
+            this.CbTime.Location = new System.Drawing.Point(355, 201);
+            this.CbTime.Name = "CbTime";
+            this.CbTime.Size = new System.Drawing.Size(260, 36);
+            this.CbTime.TabIndex = 6;
+            this.CbTime.Text = null;
+            this.CbTime.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
+            this.CbTime.TextLeftMargin = 5;
+            this.CbTime.SelectedIndexChanged += new System.EventHandler(this.CbTime_SelectedIndexChanged);
+            // 
+            // bunifuLabel3
+            // 
+            this.bunifuLabel3.AllowParentOverrides = false;
+            this.bunifuLabel3.AutoEllipsis = false;
+            this.bunifuLabel3.CursorType = null;
+            this.bunifuLabel3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.bunifuLabel3.Location = new System.Drawing.Point(359, 182);
+            this.bunifuLabel3.Name = "bunifuLabel3";
+            this.bunifuLabel3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bunifuLabel3.Size = new System.Drawing.Size(29, 17);
+            this.bunifuLabel3.TabIndex = 40;
+            this.bunifuLabel3.Text = "Time";
+            this.bunifuLabel3.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.bunifuLabel3.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // errorProvider2
             // 
@@ -665,12 +825,24 @@
             // 
             this.errorProvider5.ContainerControl = this;
             // 
+            // errorProvider6
+            // 
+            this.errorProvider6.ContainerControl = this;
+            // 
+            // errorProvider7
+            // 
+            this.errorProvider7.ContainerControl = this;
+            // 
             // Form_Appointmentform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(674, 398);
+            this.ClientSize = new System.Drawing.Size(686, 461);
+            this.Controls.Add(this.bunifuLabel3);
+            this.Controls.Add(this.CbTime);
+            this.Controls.Add(this.bunifuLabel2);
+            this.Controls.Add(this.TbEmail);
             this.Controls.Add(this.BTbookapp);
             this.Controls.Add(this.bunifuLabel1);
             this.Controls.Add(this.TbDate);
@@ -694,6 +866,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider7)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -716,9 +890,15 @@
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel1;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton BTbookapp;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel2;
+        private Bunifu.UI.WinForms.BunifuTextBox TbEmail;
+        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel3;
+        private Bunifu.UI.WinForms.BunifuDropdown CbTime;
         private System.Windows.Forms.ErrorProvider errorProvider2;
         private System.Windows.Forms.ErrorProvider errorProvider3;
         private System.Windows.Forms.ErrorProvider errorProvider4;
         private System.Windows.Forms.ErrorProvider errorProvider5;
+        private System.Windows.Forms.ErrorProvider errorProvider6;
+        private System.Windows.Forms.ErrorProvider errorProvider7;
     }
 }

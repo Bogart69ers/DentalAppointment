@@ -243,6 +243,9 @@
     <Compile Include="Repository\Sex.cs">
       <DependentUpon>DentalAppointmentSystem.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repository\TimeSet.cs">
+      <DependentUpon>DentalAppointmentSystem.tt</DependentUpon>
+    </Compile>
     <Compile Include="Repository\UserAccount.cs">
       <DependentUpon>DentalAppointmentSystem.tt</DependentUpon>
     </Compile>

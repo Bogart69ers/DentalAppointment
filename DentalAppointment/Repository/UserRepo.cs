@@ -1,6 +1,7 @@
 ﻿using DentalAppointment.Utils;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,16 +19,37 @@ namespace DentalAppointment.Repository
              db = new DentalAppointmentSystemEntity();       
         }
 
-        public ErrorCode NewPatient(Patient aPatient, ref String outMessage)
+        public ErrorCode NewPatient(Patient aPatient, Appointment aappointment, ref String outMessage)
         {
             ErrorCode retValue = ErrorCode.Error;
             try
             {
+                db.Appointments.Add(aappointment);
                 db.Patients.Add(aPatient);
                 db.SaveChanges();
+ 
 
                 outMessage = "Appointment Booked";
                 retValue = ErrorCode.Success;
+            }
+            catch (DbUpdateException ex)
+            {
+                var sb = new StringBuilder();
+                sb.AppendLine("DbUpdateException occurred.");
+                foreach (var entry in ex.Entries)
+                {
+                    sb.AppendLine($"Entity of type {entry.Entity.GetType().Name} in state {entry.State} could not be updated");
+                }
+
+                var innerException = ex.InnerException;
+                while (innerException != null)
+                {
+                    sb.AppendLine($"Inner Exception: {innerException.Message}");
+                    innerException = innerException.InnerException;
+                }
+
+                outMessage = sb.ToString();
+                MessageBox.Show(outMessage);
             }
             catch (Exception ex)
             {
