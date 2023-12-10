@@ -35,7 +35,7 @@
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges5 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            this.SidebarMenu2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.SidebarMenu = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.menuButton = new System.Windows.Forms.PictureBox();
@@ -57,7 +57,7 @@
             this.BTPrevious = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.BTnext = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.lbMonthyr = new Bunifu.UI.WinForms.BunifuLabel();
-            this.SidebarMenu2.SuspendLayout();
+            this.SidebarMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.menuButton)).BeginInit();
             this.panel3.SuspendLayout();
@@ -65,19 +65,20 @@
             this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
-            // SidebarMenu2
+            // SidebarMenu
             // 
-            this.SidebarMenu2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
-            this.SidebarMenu2.Controls.Add(this.panel1);
-            this.SidebarMenu2.Controls.Add(this.panel3);
-            this.SidebarMenu2.Controls.Add(this.panel2);
-            this.SidebarMenu2.Controls.Add(this.panel5);
-            this.SidebarMenu2.Location = new System.Drawing.Point(0, 0);
-            this.SidebarMenu2.MaximumSize = new System.Drawing.Size(222, 703);
-            this.SidebarMenu2.MinimumSize = new System.Drawing.Size(65, 703);
-            this.SidebarMenu2.Name = "SidebarMenu2";
-            this.SidebarMenu2.Size = new System.Drawing.Size(65, 703);
-            this.SidebarMenu2.TabIndex = 23;
+            this.SidebarMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.SidebarMenu.Controls.Add(this.panel1);
+            this.SidebarMenu.Controls.Add(this.panel3);
+            this.SidebarMenu.Controls.Add(this.panel2);
+            this.SidebarMenu.Controls.Add(this.panel5);
+            this.SidebarMenu.Location = new System.Drawing.Point(0, 0);
+            this.SidebarMenu.MaximumSize = new System.Drawing.Size(222, 703);
+            this.SidebarMenu.MinimumSize = new System.Drawing.Size(65, 703);
+            this.SidebarMenu.Name = "SidebarMenu";
+            this.SidebarMenu.Size = new System.Drawing.Size(65, 703);
+            this.SidebarMenu.TabIndex = 23;
+            this.SidebarMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.SidebarMenu_Paint);
             // 
             // panel1
             // 
@@ -109,6 +110,7 @@
             this.menuButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.menuButton.TabIndex = 0;
             this.menuButton.TabStop = false;
+            this.menuButton.Click += new System.EventHandler(this.menuButton_Click_1);
             // 
             // panel3
             // 
@@ -724,7 +726,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(1230, 703);
-            this.Controls.Add(this.SidebarMenu2);
+            this.Controls.Add(this.SidebarMenu);
             this.Controls.Add(this.lbMonthyr);
             this.Controls.Add(this.bunifuLabel7);
             this.Controls.Add(this.bunifuLabel4);
@@ -740,7 +742,7 @@
             this.Name = "Form_Appointment";
             this.Text = "Form_Appointment";
             this.Load += new System.EventHandler(this.Form_Appointment_Load);
-            this.SidebarMenu2.ResumeLayout(false);
+            this.SidebarMenu.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.menuButton)).EndInit();
@@ -754,7 +756,7 @@
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel SidebarMenu2;
+        private System.Windows.Forms.FlowLayoutPanel SidebarMenu;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox menuButton;

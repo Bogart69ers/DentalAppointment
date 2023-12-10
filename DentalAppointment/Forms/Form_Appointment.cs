@@ -84,8 +84,8 @@ namespace DentalAppointment.Forms
         {
             if (sidebarExpand)
             {
-                SidebarMenu2.Width -= 10;
-                if (SidebarMenu2.Width == SidebarMenu2.MinimumSize.Width)
+                SidebarMenu.Width -= 10;
+                if (SidebarMenu.Width == SidebarMenu.MinimumSize.Width)
                 {
                     sidebarExpand = false;
                     SidebarT.Stop();
@@ -93,13 +93,23 @@ namespace DentalAppointment.Forms
             }
             else
             {
-                SidebarMenu2.Width += 10;
-                if (SidebarMenu2.Width == SidebarMenu2.MaximumSize.Width)
+                SidebarMenu.Width += 10;
+                if (SidebarMenu.Width == SidebarMenu.MaximumSize.Width)
                 {
                     sidebarExpand = true;
                     SidebarT.Stop();
                 }
             }
+        }
+
+        private void SidebarMenu_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void menuButton_Click_1(object sender, EventArgs e)
+        {
+            SidebarT.Start();
         }
 
         private void BTPrevious_Click(object sender, EventArgs e)

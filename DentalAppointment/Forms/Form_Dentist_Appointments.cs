@@ -50,5 +50,15 @@ namespace DentalAppointment.Forms
                 }
             }
         }
+
+        private void SidebarMenu_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Form_Dentist_Appointments_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

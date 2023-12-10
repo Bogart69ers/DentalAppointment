@@ -135,29 +135,31 @@ namespace DentalAppointment.Forms
                 errorProvider7.SetError(CbTime, "Empty Field");
                 return;
             }
-
-
             // Create new object of USER_ACCOUNT
-            Patient newPatient = new Patient();
-            newPatient.FirstName = tbApFirstName.Text;
-            newPatient.LastName = tbApLastName.Text;
-            newPatient.ContactNumber = tbApContact.Text;
-            newPatient.Sex = cbSex.Text;
-            newPatient.AppointmentPurpose = cbService.Text;
-            newPatient.Email = TbEmail.Text;
+                Patient newPatient = new Patient();
+                newPatient.FirstName = tbApFirstName.Text;
+                newPatient.LastName = tbApLastName.Text;
+                newPatient.ContactNumber = tbApContact.Text;
+                newPatient.Sex = cbSex.Text;
+                newPatient.AppointmentPurpose = cbService.Text;
+                newPatient.Email = TbEmail.Text;
 
-            //Create new Appointment
-            Appointment newAppointment = new Appointment();
-            //Appointment.PatientId = Patient.PatientId;
-            newAppointment.PatientName = tbApFirstName.Text + " " + tbApLastName.Text;
-            newAppointment.AppointmentPurpose = cbService.Text;
-            newAppointment.DateAndTime = TbDate.Text + " " + CbTime.Text;
-            newAppointment.Email = TbEmail.Text;
-            newAppointment.Status = "Pending";
-
-            ErrorCode retValue = Repo.NewPatient(newPatient, newAppointment, ref strOutputMsg);
+            ErrorCode retValue = Repo.NewPatient(newPatient, ref strOutputMsg);
             if (retValue == ErrorCode.Success)
             {
+                int PatientId = newPatient.PatientId;
+
+                Appointment newAppointment = new Appointment();
+                //Appointment.PatientId = Patient.PatientId;
+                newAppointment.PatientName = tbApFirstName.Text + " " + tbApLastName.Text;
+                newAppointment.AppointmentPurpose = cbService.Text;
+                newAppointment.DateAndTime = TbDate.Text + " " + CbTime.Text;
+                newAppointment.Email = TbEmail.Text;
+                newAppointment.Status = "Pending";
+                newAppointment.PatientId = PatientId;
+
+            ErrorCode appointmentRetValue = Repo.NewAppointment(newAppointment, ref strOutputMsg);
+
                 //Clear the errors
                 errorProvider1.Clear();
                 MessageBox.Show(strOutputMsg, "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);

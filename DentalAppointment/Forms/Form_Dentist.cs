@@ -61,5 +61,10 @@ namespace DentalAppointment.Forms
         {
 
         }
+
+        private void Form_Dentist_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

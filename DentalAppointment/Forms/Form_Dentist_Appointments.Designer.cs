@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Dentist_Appointments));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges7 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges8 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges9 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             this.SidebarMenu = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -66,6 +66,7 @@
             this.SidebarMenu.Name = "SidebarMenu";
             this.SidebarMenu.Size = new System.Drawing.Size(65, 703);
             this.SidebarMenu.TabIndex = 2;
+            this.SidebarMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.SidebarMenu_Paint);
             // 
             // panel1
             // 
@@ -126,11 +127,11 @@
             this.btDashboard.ColorContrastOnClick = 45;
             this.btDashboard.ColorContrastOnHover = 45;
             this.btDashboard.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            this.btDashboard.CustomizableEdges = borderEdges1;
+            borderEdges7.BottomLeft = true;
+            borderEdges7.BottomRight = true;
+            borderEdges7.TopLeft = true;
+            borderEdges7.TopRight = true;
+            this.btDashboard.CustomizableEdges = borderEdges7;
             this.btDashboard.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btDashboard.DisabledBorderColor = System.Drawing.Color.Transparent;
             this.btDashboard.DisabledFillColor = System.Drawing.Color.Transparent;
@@ -224,11 +225,11 @@
             this.btAppointments.ColorContrastOnClick = 45;
             this.btAppointments.ColorContrastOnHover = 45;
             this.btAppointments.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges2.BottomLeft = true;
-            borderEdges2.BottomRight = true;
-            borderEdges2.TopLeft = true;
-            borderEdges2.TopRight = true;
-            this.btAppointments.CustomizableEdges = borderEdges2;
+            borderEdges8.BottomLeft = true;
+            borderEdges8.BottomRight = true;
+            borderEdges8.TopLeft = true;
+            borderEdges8.TopRight = true;
+            this.btAppointments.CustomizableEdges = borderEdges8;
             this.btAppointments.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btAppointments.DisabledBorderColor = System.Drawing.Color.Transparent;
             this.btAppointments.DisabledFillColor = System.Drawing.Color.Transparent;
@@ -321,11 +322,11 @@
             this.btLogout.ColorContrastOnClick = 45;
             this.btLogout.ColorContrastOnHover = 45;
             this.btLogout.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges3.BottomLeft = true;
-            borderEdges3.BottomRight = true;
-            borderEdges3.TopLeft = true;
-            borderEdges3.TopRight = true;
-            this.btLogout.CustomizableEdges = borderEdges3;
+            borderEdges9.BottomLeft = true;
+            borderEdges9.BottomRight = true;
+            borderEdges9.TopLeft = true;
+            borderEdges9.TopRight = true;
+            this.btLogout.CustomizableEdges = borderEdges9;
             this.btLogout.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btLogout.DisabledBorderColor = System.Drawing.Color.Transparent;
             this.btLogout.DisabledFillColor = System.Drawing.Color.Transparent;
@@ -408,6 +409,7 @@
             this.MaximizeBox = false;
             this.Name = "Form_Dentist_Appointments";
             this.Text = "Dentist Appointments";
+            this.Load += new System.EventHandler(this.Form_Dentist_Appointments_Load);
             this.SidebarMenu.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

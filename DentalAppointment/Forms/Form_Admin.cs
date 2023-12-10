@@ -300,7 +300,7 @@ namespace DentalAppointment.Forms
 
         private void logoutBt_Click(object sender, EventArgs e)
         {
-            new Form_Landing().Show();
+            new Form_Login().Show();
             this.Hide();
         }
 

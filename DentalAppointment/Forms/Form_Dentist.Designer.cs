@@ -410,6 +410,7 @@
             this.MaximizeBox = false;
             this.Name = "Form_Dentist";
             this.Text = "Dentist Dashboard";
+            this.Load += new System.EventHandler(this.Form_Dentist_Load);
             this.SidebarMenu.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
