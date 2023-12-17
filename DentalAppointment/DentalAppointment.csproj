@@ -250,7 +250,14 @@
       <DependentUpon>DentalAppointmentSystem.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\UserRepo.cs" />
+    <Compile Include="Repository\VW_Appointments.cs">
+      <DependentUpon>DentalAppointmentSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\VW_UserAccounts.cs">
+      <DependentUpon>DentalAppointmentSystem.tt</DependentUpon>
+    </Compile>
     <Compile Include="Utils\Database.cs" />
+    <Compile Include="Utils\Func.cs" />
     <EmbeddedResource Include="Forms\Form_Admin.resx">
       <DependentUpon>Form_Admin.cs</DependentUpon>
     </EmbeddedResource>

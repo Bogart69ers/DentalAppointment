@@ -12,6 +12,8 @@ namespace DentalAppointment.Repository
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class DentalAppointmentSystemEntity : DbContext
     {
@@ -32,5 +34,122 @@ namespace DentalAppointment.Repository
         public virtual DbSet<Sex> Sexes { get; set; }
         public virtual DbSet<TimeSet> TimeSets { get; set; }
         public virtual DbSet<Appointment> Appointments { get; set; }
+        public virtual DbSet<VW_UserAccounts> VW_UserAccounts { get; set; }
+        public virtual DbSet<VW_Appointments> VW_Appointments { get; set; }
+    
+        public virtual int SP_CreatePatient(string firstName, string lastName, string contactNumber, string sex, string email)
+        {
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("FirstName", firstName) :
+                new ObjectParameter("FirstName", typeof(string));
+    
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("LastName", lastName) :
+                new ObjectParameter("LastName", typeof(string));
+    
+            var contactNumberParameter = contactNumber != null ?
+                new ObjectParameter("ContactNumber", contactNumber) :
+                new ObjectParameter("ContactNumber", typeof(string));
+    
+            var sexParameter = sex != null ?
+                new ObjectParameter("Sex", sex) :
+                new ObjectParameter("Sex", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_CreatePatient", firstNameParameter, lastNameParameter, contactNumberParameter, sexParameter, emailParameter);
+        }
+    
+        public virtual int SP_CreateAppointment(Nullable<int> patientId, string patientName, string appointmentPurpose, string dateAndTime, string status, string email, string firstName, string lastName, string contactNumber, string sex)
+        {
+            var patientIdParameter = patientId.HasValue ?
+                new ObjectParameter("PatientId", patientId) :
+                new ObjectParameter("PatientId", typeof(int));
+    
+            var patientNameParameter = patientName != null ?
+                new ObjectParameter("PatientName", patientName) :
+                new ObjectParameter("PatientName", typeof(string));
+    
+            var appointmentPurposeParameter = appointmentPurpose != null ?
+                new ObjectParameter("AppointmentPurpose", appointmentPurpose) :
+                new ObjectParameter("AppointmentPurpose", typeof(string));
+    
+            var dateAndTimeParameter = dateAndTime != null ?
+                new ObjectParameter("DateAndTime", dateAndTime) :
+                new ObjectParameter("DateAndTime", typeof(string));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("FirstName", firstName) :
+                new ObjectParameter("FirstName", typeof(string));
+    
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("LastName", lastName) :
+                new ObjectParameter("LastName", typeof(string));
+    
+            var contactNumberParameter = contactNumber != null ?
+                new ObjectParameter("ContactNumber", contactNumber) :
+                new ObjectParameter("ContactNumber", typeof(string));
+    
+            var sexParameter = sex != null ?
+                new ObjectParameter("Sex", sex) :
+                new ObjectParameter("Sex", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_CreateAppointment", patientIdParameter, patientNameParameter, appointmentPurposeParameter, dateAndTimeParameter, statusParameter, emailParameter, firstNameParameter, lastNameParameter, contactNumberParameter, sexParameter);
+        }
+    
+        public virtual int SP_BookAppointment(string firstName, string lastName, string contactNumber, string sex, string email, string patientName, string appointmentPurpose, string dateAndTime, string status, string appointmentEmail)
+        {
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("FirstName", firstName) :
+                new ObjectParameter("FirstName", typeof(string));
+    
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("LastName", lastName) :
+                new ObjectParameter("LastName", typeof(string));
+    
+            var contactNumberParameter = contactNumber != null ?
+                new ObjectParameter("ContactNumber", contactNumber) :
+                new ObjectParameter("ContactNumber", typeof(string));
+    
+            var sexParameter = sex != null ?
+                new ObjectParameter("Sex", sex) :
+                new ObjectParameter("Sex", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var patientNameParameter = patientName != null ?
+                new ObjectParameter("PatientName", patientName) :
+                new ObjectParameter("PatientName", typeof(string));
+    
+            var appointmentPurposeParameter = appointmentPurpose != null ?
+                new ObjectParameter("AppointmentPurpose", appointmentPurpose) :
+                new ObjectParameter("AppointmentPurpose", typeof(string));
+    
+            var dateAndTimeParameter = dateAndTime != null ?
+                new ObjectParameter("DateAndTime", dateAndTime) :
+                new ObjectParameter("DateAndTime", typeof(string));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            var appointmentEmailParameter = appointmentEmail != null ?
+                new ObjectParameter("AppointmentEmail", appointmentEmail) :
+                new ObjectParameter("AppointmentEmail", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_BookAppointment", firstNameParameter, lastNameParameter, contactNumberParameter, sexParameter, emailParameter, patientNameParameter, appointmentPurposeParameter, dateAndTimeParameter, statusParameter, appointmentEmailParameter);
+        }
     }
 }

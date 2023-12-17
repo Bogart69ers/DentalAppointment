@@ -1,6 +1,7 @@
 ﻿using DentalAppointment.Utils;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
@@ -12,86 +13,47 @@ namespace DentalAppointment.Repository
 {
     public class UserRepo
     {
+        private readonly Boolean debug = true;
         public DentalAppointmentSystemEntity db;
+        private static UserRepo Repository;
 
         public UserRepo() 
         {
-             db = new DentalAppointmentSystemEntity();       
+            db = new DentalAppointmentSystemEntity();
+            Repository = this;
         }
 
-        public ErrorCode NewPatient(Patient aPatient, ref String outMessage)
+        public static UserRepo GetInstance()
         {
-            ErrorCode retValue = ErrorCode.Error;
+            if (Repository == null)
+                Repository = new UserRepo();
+                return Repository;
+        }
+
+        public void RefreshDB()
+        {
+            db = new DentalAppointmentSystemEntity();
+        }
+
+        public Boolean NewBookAppointment(Patient patient, Appointment appointment)
+        {
             try
             {
-                db.Patients.Add(aPatient);
-                db.SaveChanges();
- 
-                retValue = ErrorCode.Success;
-            }
-            catch (DbUpdateException ex)
-            {
-                var sb = new StringBuilder();
-                sb.AppendLine("DbUpdateException occurred.");
-                foreach (var entry in ex.Entries)
-                {
-                    sb.AppendLine($"Entity of type {entry.Entity.GetType().Name} in state {entry.State} could not be updated");
-                }
+                db.SP_BookAppointment(patient.FirstName, patient.LastName, patient.ContactNumber, patient.Sex, patient.Email,appointment.PatientName, appointment.AppointmentPurpose,
+                    appointment.DateAndTime, appointment.Status, appointment.Email);
 
-                var innerException = ex.InnerException;
-                while (innerException != null)
-                {
-                    sb.AppendLine($"Inner Exception: {innerException.Message}");
-                    innerException = innerException.InnerException;
-                }
-
+                
+                return true;
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                outMessage = ex.Message;
-                MessageBox.Show(ex.Message);
+                if (debug)
+                    Func.ShowResultMessageBox(e.ToString(), ErrorCode.Error);
+                return false;
             }
-            return retValue;
         }
 
-        public ErrorCode NewAppointment(Appointment aappointment, ref String outMessage)
-        {
-            ErrorCode retValue = ErrorCode.Error;
-            try
-            {
-                db.Appointments.Add(aappointment);       
-                db.SaveChanges();
 
-
-                outMessage = "Appointment Booked";
-                retValue = ErrorCode.Success;
-            }
-            catch (DbUpdateException ex)
-            {
-                var sb = new StringBuilder();
-                sb.AppendLine("DbUpdateException occurred.");
-                foreach (var entry in ex.Entries)
-                {
-                    sb.AppendLine($"Entity of type {entry.Entity.GetType().Name} in state {entry.State} could not be updated");
-                }
-
-                var innerException = ex.InnerException;
-                while (innerException != null)
-                {
-                    sb.AppendLine($"Inner Exception: {innerException.Message}");
-                    innerException = innerException.InnerException;
-                }
-
-                outMessage = sb.ToString();
-                MessageBox.Show(outMessage);
-            }
-            catch (Exception ex)
-            {
-                outMessage = ex.Message;
-                MessageBox.Show(ex.Message);
-            }
-            return retValue;
-        }
 
         public ErrorCode NewUser(UserAccount aUserAccount, ref String outMessage)
         {
@@ -180,11 +142,16 @@ namespace DentalAppointment.Repository
             // SELECT TOP 1 * FROM USERACCOUNT WHERE userName == username
             return db.UserAccounts.Where(s => s.Username == username).FirstOrDefault();
         }
-        public List<UserAccount> UserAccounts()
+        public List<VW_UserAccounts> GetUserAccounts()
         {
-            db = new DentalAppointmentSystemEntity();
+            RefreshDB();
+            return db.VW_UserAccounts.ToList();
+        }
 
-            return db.UserAccounts.ToList();
+        public List<VW_Appointments> GetAppointments()
+        {
+            RefreshDB();
+            return db.VW_Appointments.ToList();
         }
 
         /*public List<DentistAppointmentsView> AllUserRole()

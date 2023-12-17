@@ -8,8 +8,8 @@ namespace DentalAppointment.Utils
 {
         public enum ErrorCode
         {
-            Success = 0,
-            Error = 1
+            Success = 1,
+            Error = 0
         }
 
         public enum Roles

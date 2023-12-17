@@ -44,12 +44,14 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.btLogout = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.SidebarT = new System.Windows.Forms.Timer(this.components);
+            this.dvg_Appointments = new System.Windows.Forms.DataGridView();
             this.SidebarMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.menuButton)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dvg_Appointments)).BeginInit();
             this.SuspendLayout();
             // 
             // SidebarMenu
@@ -398,12 +400,21 @@
             this.SidebarT.Interval = 1;
             this.SidebarT.Tick += new System.EventHandler(this.dentistT);
             // 
+            // dvg_Appointments
+            // 
+            this.dvg_Appointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dvg_Appointments.Location = new System.Drawing.Point(427, 31);
+            this.dvg_Appointments.Name = "dvg_Appointments";
+            this.dvg_Appointments.Size = new System.Drawing.Size(791, 660);
+            this.dvg_Appointments.TabIndex = 2;
+            // 
             // Form_Dentist
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(1230, 703);
+            this.Controls.Add(this.dvg_Appointments);
             this.Controls.Add(this.SidebarMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -418,6 +429,7 @@
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dvg_Appointments)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -435,5 +447,6 @@
         private System.Windows.Forms.Timer SidebarT;
         private System.Windows.Forms.Panel panel4;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btLogout;
+        private System.Windows.Forms.DataGridView dvg_Appointments;
     }
 }

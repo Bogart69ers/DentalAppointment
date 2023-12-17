@@ -26,7 +26,6 @@
           <Property Name="LastName" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="ContactNumber" Type="varchar" MaxLength="255" />
           <Property Name="Sex" Type="varchar" MaxLength="10" />
-          <Property Name="AppointmentPurpose" Type="varchar" MaxLength="255" />
           <Property Name="Email" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Roles">
@@ -73,6 +72,36 @@
           <Property Name="RoleID" Type="int" />
           <Property Name="ContactInfo" Type="nvarchar" MaxLength="100" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DentalAppointmentSystem.dbo.VW_Appointments' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VW_Appointments">
+          <Key>
+            <PropertyRef Name="AppointmentId" />
+            <PropertyRef Name="PatientId" />
+            <PropertyRef Name="Patient Name" />
+          </Key>
+          <Property Name="AppointmentId" Type="int" Nullable="false" />
+          <Property Name="PatientId" Type="int" Nullable="false" />
+          <Property Name="Patient Name" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="AppointmentPurpose" Type="varchar" MaxLength="255" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="DateAndTime" Type="nvarchar" MaxLength="200" />
+          <Property Name="Status" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DentalAppointmentSystem.dbo.VW_UserAccounts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VW_UserAccounts">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Username" Type="nvarchar" MaxLength="100" />
+          <Property Name="Password" Type="nvarchar" MaxLength="255" />
+          <Property Name="RoleID" Type="int" />
+          <Property Name="ContactInfo" Type="nvarchar" MaxLength="100" />
+        </EntityType>
         <Association Name="FK__Appointme__Patie__571DF1D5">
           <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
           <End Role="Appointments" Type="Self.Appointments" Multiplicity="*" />
@@ -85,6 +114,25 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="SP_BookAppointment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FirstName" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="ContactNumber" Type="varchar" Mode="In" />
+          <Parameter Name="Sex" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="PatientName" Type="nvarchar" Mode="In" />
+          <Parameter Name="AppointmentPurpose" Type="nvarchar" Mode="In" />
+          <Parameter Name="DateAndTime" Type="nvarchar" Mode="In" />
+          <Parameter Name="Status" Type="nvarchar" Mode="In" />
+          <Parameter Name="AppointmentEmail" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_CreatePatient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FirstName" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="ContactNumber" Type="varchar" Mode="In" />
+          <Parameter Name="Sex" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+        </Function>
         <EntityContainer Name="DentalAppointmentSystemModelStoreContainer">
           <EntitySet Name="Appointments" EntityType="Self.Appointments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
@@ -93,6 +141,28 @@
           <EntitySet Name="Sex" EntityType="Self.Sex" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TimeSet" EntityType="Self.TimeSet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserAccount" EntityType="Self.UserAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VW_Appointments" EntityType="Self.VW_Appointments" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_Appointments].[AppointmentId] AS [AppointmentId], 
+    [VW_Appointments].[PatientId] AS [PatientId], 
+    [VW_Appointments].[Patient Name] AS [Patient Name], 
+    [VW_Appointments].[AppointmentPurpose] AS [AppointmentPurpose], 
+    [VW_Appointments].[Email] AS [Email], 
+    [VW_Appointments].[DateAndTime] AS [DateAndTime], 
+    [VW_Appointments].[Status] AS [Status]
+    FROM [dbo].[VW_Appointments] AS [VW_Appointments]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_UserAccounts" EntityType="Self.VW_UserAccounts" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_UserAccounts].[UserId] AS [UserId], 
+    [VW_UserAccounts].[FirstName] AS [FirstName], 
+    [VW_UserAccounts].[LastName] AS [LastName], 
+    [VW_UserAccounts].[Username] AS [Username], 
+    [VW_UserAccounts].[Password] AS [Password], 
+    [VW_UserAccounts].[RoleID] AS [RoleID], 
+    [VW_UserAccounts].[ContactInfo] AS [ContactInfo]
+    FROM [dbo].[VW_UserAccounts] AS [VW_UserAccounts]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK__Appointme__Patie__571DF1D5" Association="Self.FK__Appointme__Patie__571DF1D5">
             <End Role="Patient" EntitySet="Patient" />
             <End Role="Appointments" EntitySet="Appointments" />
@@ -111,7 +181,6 @@
           <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ContactNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Sex" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="AppointmentPurpose" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Appointments1" Relationship="DentalAppointmentSystemModel.FK__Appointme__Patie__571DF1D5" FromRole="Patient" ToRole="Appointment1" />
         </EntityType>
@@ -155,6 +224,39 @@
             <End Role="Patient" EntitySet="Patients" />
             <End Role="Appointment1" EntitySet="Appointments" />
           </AssociationSet>
+          <EntitySet Name="VW_UserAccounts" EntityType="DentalAppointmentSystemModel.VW_UserAccounts" />
+          <EntitySet Name="VW_Appointments" EntityType="DentalAppointmentSystemModel.VW_Appointments" />
+          <FunctionImport Name="SP_CreatePatient">
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="ContactNumber" Mode="In" Type="String" />
+            <Parameter Name="Sex" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_CreateAppointment">
+            <Parameter Name="PatientId" Mode="In" Type="Int32" />
+            <Parameter Name="PatientName" Mode="In" Type="String" />
+            <Parameter Name="AppointmentPurpose" Mode="In" Type="String" />
+            <Parameter Name="DateAndTime" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="ContactNumber" Mode="In" Type="String" />
+            <Parameter Name="Sex" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_BookAppointment">
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="ContactNumber" Mode="In" Type="String" />
+            <Parameter Name="Sex" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="PatientName" Mode="In" Type="String" />
+            <Parameter Name="AppointmentPurpose" Mode="In" Type="String" />
+            <Parameter Name="DateAndTime" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="String" />
+            <Parameter Name="AppointmentEmail" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="Sex">
           <Key>
@@ -197,6 +299,32 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="VW_UserAccounts">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RoleID" Type="Int32" />
+          <Property Name="ContactInfo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="VW_Appointments">
+          <Key>
+            <PropertyRef Name="AppointmentId" />
+            <PropertyRef Name="PatientId" />
+            <PropertyRef Name="Patient_Name" />
+          </Key>
+          <Property Name="AppointmentId" Type="Int32" Nullable="false" />
+          <Property Name="PatientId" Type="Int32" Nullable="false" />
+          <Property Name="Patient_Name" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="AppointmentPurpose" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DateAndTime" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -212,7 +340,6 @@
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
                 <ScalarProperty Name="Sex" ColumnName="Sex" />
-                <ScalarProperty Name="AppointmentPurpose" ColumnName="AppointmentPurpose" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -278,6 +405,34 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="VW_UserAccounts">
+            <EntityTypeMapping TypeName="DentalAppointmentSystemModel.VW_UserAccounts">
+              <MappingFragment StoreEntitySet="VW_UserAccounts">
+                <ScalarProperty Name="ContactInfo" ColumnName="ContactInfo" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_Appointments">
+            <EntityTypeMapping TypeName="DentalAppointmentSystemModel.VW_Appointments">
+              <MappingFragment StoreEntitySet="VW_Appointments">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DateAndTime" ColumnName="DateAndTime" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="AppointmentPurpose" ColumnName="AppointmentPurpose" />
+                <ScalarProperty Name="Patient_Name" ColumnName="Patient Name" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="AppointmentId" ColumnName="AppointmentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_CreatePatient" FunctionName="DentalAppointmentSystemModel.Store.SP_CreatePatient" />
+          <FunctionImportMapping FunctionImportName="SP_BookAppointment" FunctionName="DentalAppointmentSystemModel.Store.SP_BookAppointment" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

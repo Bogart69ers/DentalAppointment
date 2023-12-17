@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DentalAppointment.Repository;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -64,7 +65,12 @@ namespace DentalAppointment.Forms
 
         private void Form_Dentist_Load(object sender, EventArgs e)
         {
-
+            loadAppointments();
         }
+
+        private void loadAppointments()
+        {
+            dvg_Appointments.DataSource = UserRepo.GetInstance().GetAppointments();
+        }   
     }
 }

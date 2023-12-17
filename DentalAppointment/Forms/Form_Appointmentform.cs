@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,9 +18,7 @@ namespace DentalAppointment.Forms
     {
         public List<Service> listServices;
         public List<Sex> listSex;
-        public List<TimeSet> listTimeSets;
-
-        UserRepo Repo;
+        public List<TimeSet> listTimeSets;        
         
         public Form_Appointmentform()
         {
@@ -32,8 +31,7 @@ namespace DentalAppointment.Forms
             loadcbService();
             loadcbSex();
             loadCbTime();
-           
-            Repo = new UserRepo();
+                     
             TbDate.Text =Form_Appointment.static_month+"/"+ UserControlDays.static_day + "/" + Form_Appointment.static_year;
         }
 
@@ -78,112 +76,78 @@ namespace DentalAppointment.Forms
 
         private void BTbookapp_Click(object sender, EventArgs e)
         {
-            String strOutputMsg = "";
-            String FirstName = tbApFirstName.Text;
-            String LastName = tbApLastName.Text;
-            String ContactNumber = tbApContact.Text;
-            String Sex = cbSex.Text;
-            String AppointmentPurpose = cbService.Text;
-            String Email = TbEmail.Text;
-            String Time = CbTime.Text;
-
-            if (String.IsNullOrEmpty(FirstName))
-            {
-                errorProvider1.SetError(tbApFirstName, "Empty Field!");
-                return;
-            }
-            else
-
-            if (String.IsNullOrEmpty(LastName))
-            {
-                errorProvider2.SetError(tbApLastName, "Empty Field!");
-                return;
-            }
-            else
-
-           if (String.IsNullOrEmpty(Sex))
-            {
-                errorProvider4.SetError(cbSex, "Empty Field!");
-                return;
-            }
-
-            else
-
-           if (String.IsNullOrEmpty(ContactNumber))
-            {
-                errorProvider3.SetError(tbApContact, "Empty Field!");
-                return;
-            }          
-            else
-           // Validation not allow empty or null value
-           if (String.IsNullOrEmpty(AppointmentPurpose))
-            {
-                errorProvider5.SetError(cbService, "Empty Field!");
-                return;
-            }
-            else
-
-            if (String.IsNullOrEmpty(Email))
-            {
-                errorProvider6.SetError(TbEmail, "Empty Field");
-                return;
-            }
-            else
-
-            if (String.IsNullOrEmpty(Time))
-            {
-                errorProvider7.SetError(CbTime, "Empty Field");
-                return;
-            }
-            // Create new object of USER_ACCOUNT
+            if (DetailsFilled())
+            {                
                 Patient newPatient = new Patient();
                 newPatient.FirstName = tbApFirstName.Text;
                 newPatient.LastName = tbApLastName.Text;
                 newPatient.ContactNumber = tbApContact.Text;
                 newPatient.Sex = cbSex.Text;
-                newPatient.AppointmentPurpose = cbService.Text;
                 newPatient.Email = TbEmail.Text;
-
-            ErrorCode retValue = Repo.NewPatient(newPatient, ref strOutputMsg);
-            if (retValue == ErrorCode.Success)
-            {
-                int PatientId = newPatient.PatientId;
 
                 Appointment newAppointment = new Appointment();
                 //Appointment.PatientId = Patient.PatientId;
                 newAppointment.PatientName = tbApFirstName.Text + " " + tbApLastName.Text;
                 newAppointment.AppointmentPurpose = cbService.Text;
                 newAppointment.DateAndTime = TbDate.Text + " " + CbTime.Text;
-                newAppointment.Email = TbEmail.Text;
                 newAppointment.Status = "Pending";
-                newAppointment.PatientId = PatientId;
+                newAppointment.Email = TbEmail.Text;
 
-            ErrorCode appointmentRetValue = Repo.NewAppointment(newAppointment, ref strOutputMsg);
+                if (UserRepo.GetInstance().NewBookAppointment(newPatient, newAppointment))
+                {
 
-                //Clear the errors
-                errorProvider1.Clear();
-                MessageBox.Show(strOutputMsg, "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-               
-
-                tbApFirstName.Clear();
-                tbApLastName.Clear();
-                tbApContact.Clear();
-                cbService.ResetText();
-                cbSex.ResetText();
-                TbDate.Clear();
-                TbEmail.Clear();
-
+                    Func.ShowResultMessageBox("Successfully Booked!", ErrorCode.Success);
+                    this.DialogResult = DialogResult.Yes;
+                    
+                    this.Dispose();
+                }
+                else
+                {
+                    Func.ShowResultMessageBox("Failed to create Booking.", ErrorCode.Error);
+                    this.DialogResult = DialogResult.Yes;
+                }
             }
-            else
-            {
-                // error 
-                MessageBox.Show(strOutputMsg, "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            this.Hide();
 
 
 
         }
+        private Boolean DetailsFilled()
+        {
+            bool proceed = true;
+            errorProvider1.Clear();
+            if (String.IsNullOrEmpty(tbApFirstName.Text))
+            {
+                errorProvider1.SetError(tbApFirstName, "Field is empty.");
+                proceed = false;
+            }
+            if (String.IsNullOrEmpty(tbApLastName.Text))
+            {
+                errorProvider1.SetError(tbApLastName, "Field is empty.");
+                proceed = false;
+            }
+            if (String.IsNullOrEmpty(tbApContact.Text))
+            {
+                errorProvider1.SetError(tbApContact, "Field is empty.");
+                proceed = false;
+            }
+            if (cbService.SelectedIndex < 0)
+            {
+                errorProvider1.SetError(cbService, "No Selected Entry.");
+                proceed = false;
+            }
+            if (cbSex.SelectedIndex < 0)
+            {
+                errorProvider1.SetError(cbSex, "No Selected Entry.");
+                proceed = false;
+            }  
+            if (String.IsNullOrEmpty(TbEmail.Text))
+            {
+                errorProvider1.SetError(TbDate, "Field is empty.");
+                proceed = false;
+            }
+            return proceed;
+        }
+
 
         private void TbEmail_TextChanged(object sender, EventArgs e)
         {

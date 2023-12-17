@@ -33,7 +33,7 @@ namespace DentalAppointment.Forms
         }
         private void loadUser()
         {
-            dgv_admin.DataSource = Repo.UserAccounts();
+            dgv_admin.DataSource = UserRepo.GetInstance().GetUserAccounts();
         }
 
         private void button1_Click(object sender, EventArgs e)
