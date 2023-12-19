@@ -114,6 +114,10 @@ warning 6002: The table/view 'DentalAppointmentSystem.dbo.VW_UserAccounts' does 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="SP_AcceptAppointment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AppointmentId" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="SP_BookAppointment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="FirstName" Type="varchar" Mode="In" />
           <Parameter Name="LastName" Type="varchar" Mode="In" />
@@ -132,6 +136,17 @@ warning 6002: The table/view 'DentalAppointmentSystem.dbo.VW_UserAccounts' does 
           <Parameter Name="ContactNumber" Type="varchar" Mode="In" />
           <Parameter Name="Sex" Type="varchar" Mode="In" />
           <Parameter Name="Email" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_DeleteUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_NewUserAcc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Username" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="RoleId" Type="int" Mode="In" />
+          <Parameter Name="ContactInfo" Type="nvarchar" Mode="In" />
         </Function>
         <EntityContainer Name="DentalAppointmentSystemModelStoreContainer">
           <EntitySet Name="Appointments" EntityType="Self.Appointments" Schema="dbo" store:Type="Tables" />
@@ -256,6 +271,21 @@ warning 6002: The table/view 'DentalAppointmentSystem.dbo.VW_UserAccounts' does 
             <Parameter Name="DateAndTime" Mode="In" Type="String" />
             <Parameter Name="Status" Mode="In" Type="String" />
             <Parameter Name="AppointmentEmail" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_NewUserAcc">
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Username" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="RoleId" Mode="In" Type="Int32" />
+            <Parameter Name="ContactInfo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DeleteUser">
+          <Parameter Name="UserId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_AcceptAppointment">
+          <Parameter Name="AppointmentId" Mode="In" Type="Int32" />
+            <Parameter Name="Status" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="Sex">
@@ -433,6 +463,9 @@ warning 6002: The table/view 'DentalAppointmentSystem.dbo.VW_UserAccounts' does 
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="SP_CreatePatient" FunctionName="DentalAppointmentSystemModel.Store.SP_CreatePatient" />
           <FunctionImportMapping FunctionImportName="SP_BookAppointment" FunctionName="DentalAppointmentSystemModel.Store.SP_BookAppointment" />
+          <FunctionImportMapping FunctionImportName="SP_NewUserAcc" FunctionName="DentalAppointmentSystemModel.Store.SP_NewUserAcc" />
+          <FunctionImportMapping FunctionImportName="SP_DeleteUser" FunctionName="DentalAppointmentSystemModel.Store.SP_DeleteUser" />
+          <FunctionImportMapping FunctionImportName="SP_AcceptAppointment" FunctionName="DentalAppointmentSystemModel.Store.SP_AcceptAppointment" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

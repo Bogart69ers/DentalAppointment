@@ -4,20 +4,22 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace DentalAppointment.Forms
 {
     public partial class Form_Admin : Form
-    {
+    {        
         bool sidebarExpand;
         public List<Role> listRole;
         UserRepo Repo;
-        int? userSelectedId = null;
+        int userSelectedId = -1;
         public Form_Admin()
         {
             InitializeComponent();
@@ -26,8 +28,7 @@ namespace DentalAppointment.Forms
 
         private void Form_Admin_Load(object sender, EventArgs e)
         {
-            loadCBRole();
-         
+            loadCBRole();        
             Repo = new UserRepo();
             loadUser();
         }
@@ -38,97 +39,35 @@ namespace DentalAppointment.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            String username = TBUser.Text;
-            String pass = TBPass.Text;          
-            String FirstName = TBFName.Text;
-            String LastName = TBLName.Text;
-            String Role = CBRole.Text;
-            String Contact = TBContact.Text;
-          
 
-            String strOutputMsg = "";
-            // Validation not allow empty or null value
-          
 
-            if (String.IsNullOrEmpty(FirstName))
+            if (DetailsFilled())
             {
-                errorProvider1.SetError(TBFName, "Empty Field!");
-                return;
-            }
-            else
+                UserAccount newUserAcc = new UserAccount();
+                newUserAcc.Username = TBUser.Text;
+                newUserAcc.Password = TBPass.Text;
+                newUserAcc.RoleID = CBRole.SelectedIndex;
+                newUserAcc.ContactInfo = TBContact.Text;
+                newUserAcc.FirstName = TBFName.Text;
+                newUserAcc.LastName = TBLName.Text;
 
-             if (String.IsNullOrEmpty(LastName))
-            {
-                errorProvider2.SetError(TBLName, "Empty Field!");
-                return;
-            }
-            else
+                if (UserRepo.GetInstance().NewUserAcc(newUserAcc))
+                {
 
-            if (String.IsNullOrEmpty(Role))
-            {
-                errorProvider6.SetError(CBRole, "Empty Field!");
-                return;
-            }
-            
-            else
-
-            if (String.IsNullOrEmpty(username))
-            {
-                errorProvider3.SetError(TBUser, "Empty Field!");
-                return;
-            }
-            else
-            // Validation not allow empty or null value
-            if (String.IsNullOrEmpty(pass))
-            {
-                errorProvider5.SetError(TBPass, "Empty Field!");
-                return;
-            }
-            else
-            // Validation not allow empty or null value
-            if (String.IsNullOrEmpty(Contact))
-            {
-                errorProvider4.SetError(TBContact, "Empty Field!");
-                return;
+                    Func.ShowResultMessageBox("Successfully Booked!", ErrorCode.Success);
+                    this.DialogResult = DialogResult.Yes;
+                    loadUser();
+                }
+                else
+                {
+                    Func.ShowResultMessageBox("Failed to create Booking.", ErrorCode.Error);
+                    this.DialogResult = DialogResult.Yes;
+                }
             }
 
 
-            // Create new object of USER_ACCOUNT
-            UserAccount newUserAcc = new UserAccount();
-            newUserAcc.Username = TBUser.Text;
-            newUserAcc.Password = TBPass.Text;
-            newUserAcc.RoleID = CBRole.SelectedIndex;
-            newUserAcc.ContactInfo = TBContact.Text;
-            newUserAcc.FirstName = TBFName.Text; 
-            newUserAcc.LastName = TBLName.Text;
 
-            ErrorCode retValue = Repo.NewUser(newUserAcc, ref strOutputMsg);
-            if (retValue == ErrorCode.Success)
-            {
-                //Clear the errors
-                errorProvider1.Clear();
-                MessageBox.Show(strOutputMsg, "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                loadUser();
-
-                TBPass.Clear();
-                TBUser.Clear();
-                TBContact.Clear();
-                TBFName.Clear();
-                TBLName.Clear();
-                CBRole.ResetText();
-                
-            }
-            else
-            {
-                // error 
-                MessageBox.Show(strOutputMsg, "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-        }
-
-        private void TBUser_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        }     
 
         private void dgv_admin_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -148,6 +87,43 @@ namespace DentalAppointment.Forms
             {
                 Console.WriteLine($"Exception : {ex.Message}");
             }
+        }
+
+        private Boolean DetailsFilled()
+        {
+            bool proceed = true;
+            errorProvider1.Clear();
+            if (String.IsNullOrEmpty(TBUser.Text))
+            {
+                errorProvider1.SetError(TBUser, "Field is empty.");
+                proceed = false;
+            }
+            if (String.IsNullOrEmpty(TBPass.Text))
+            {
+                errorProvider1.SetError(TBPass, "Field is empty.");
+                proceed = false;
+            }
+            if (String.IsNullOrEmpty(TBFName.Text))
+            {
+                errorProvider1.SetError(TBFName, "Field is empty.");
+                proceed = false;
+            }
+            if (CBRole.SelectedIndex < 0)
+            {
+                errorProvider1.SetError(CBRole, "No Selected Entry.");
+                proceed = false;
+            }          
+            if (String.IsNullOrEmpty(TBLName.Text))
+            {
+                errorProvider1.SetError(TBLName, "Field is empty.");
+                proceed = false;
+            }
+            if (String.IsNullOrEmpty(TBContact.Text))
+            {
+                errorProvider1.SetError(TBContact, "Field is empty.");
+                proceed = false;
+            }
+            return proceed;
         }
 
         private void BTUpdate_Click(object sender, EventArgs e)
@@ -189,7 +165,7 @@ namespace DentalAppointment.Forms
             MessageBox.Show(strOutputMsg, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
             loadUser();
             // Reset the selected id
-            userSelectedId = null;
+            userSelectedId = -1;
 
             TBPass.Clear();
             TBUser.Clear();
@@ -213,40 +189,25 @@ namespace DentalAppointment.Forms
 
         private void BTDelete_Click(object sender, EventArgs e)
         {
-            String username = TBUser.Text;
-            String pass = TBPass.Text;
-
-            String strOutputMsg = "";
-
-            if (userSelectedId == null)
+            if (!userSelectedId.Equals(UserLogg.GetInstance().UserAccount.UserId)) //Check selected user if not self
             {
-                MessageBox.Show("No User Selected", "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
-
-            ErrorCode retValue = Repo.RemoveUser(userSelectedId, ref strOutputMsg);
-            if (retValue == ErrorCode.Success)
-            {
-                //Clear the errors
-                errorProvider1.Clear();
-                MessageBox.Show(strOutputMsg, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                loadUser();
-                //reset the selected id
-                userSelectedId = null;
-
-                TBPass.Clear();
-                TBUser.Clear();
-                TBContact.Clear();
-                TBFName.Clear();
-                TBLName.Clear();
-                CBRole.ResetText();
+                if (UserLogg.GetInstance().UserAccount.RoleID >= (int)dgv_admin.CurrentRow.Cells[5].Value) //Check user's access privilege
+                {
+                    if (Func.ShowConfirmationPromptMessageBox("Are you sure to delete This User ?", "Delete Confirmation").Equals(DialogResult.Yes))
+                        if (UserRepo.GetInstance().DeleteUserAccount(userSelectedId))
+                        {
+                            Func.ShowResultMessageBox("Successfully deleted User" , ErrorCode.Success);
+                            loadUser();
+                        }
+                        else
+                            Func.ShowResultMessageBox("Failed to delete User account.", ErrorCode.Error);
+                }
+                else
+                    Func.ShowResultMessageBox("Insufficient Access privilege.", ErrorCode.Error);
             }
             else
-            {
-                // error 
-                MessageBox.Show(strOutputMsg, "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-        }
+                Func.ShowResultMessageBox("Unable to perform operation on own Account.", ErrorCode.Error);
+        }   
 
         private void TBPass_TextChanged(object sender, EventArgs e)
         {
@@ -307,6 +268,23 @@ namespace DentalAppointment.Forms
         private void CBRole_SelectedIndexChanged_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void dgv_admin_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            try
+            {
+                dgv_admin.Rows[0].Selected = true;
+                userSelectedId = (int)dgv_admin.CurrentRow.Cells[0].Value;
+            }
+            catch
+            { }
+        }
+
+        private void dgv_admin_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgv_admin.CurrentRow.Selected = true;
+            userSelectedId = (int)dgv_admin.CurrentRow.Cells[0].Value;
         }
     }
 }

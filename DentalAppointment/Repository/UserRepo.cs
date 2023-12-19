@@ -1,6 +1,7 @@
 ﻿using DentalAppointment.Utils;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
@@ -12,11 +13,13 @@ using System.Windows.Forms;
 namespace DentalAppointment.Repository
 {
     public class UserRepo
-    {
+    {   
         private readonly Boolean debug = true;
         public DentalAppointmentSystemEntity db;
         private static UserRepo Repository;
 
+        public UserAccount User_Account { get; set; }
+        
         public UserRepo() 
         {
             db = new DentalAppointmentSystemEntity();
@@ -35,6 +38,22 @@ namespace DentalAppointment.Repository
             db = new DentalAppointmentSystemEntity();
         }
 
+
+        public Boolean AcceptAppointment(int userSelectedId, Appointment appointment)
+        {           
+            try
+            {
+                db.SP_AcceptAppointment(userSelectedId, appointment.Status);
+                return true;
+            }
+            catch (Exception e)
+            {
+                if (debug)
+                    Func.ShowResultMessageBox(e.ToString(), ErrorCode.Error);
+                return false;
+            }
+        }
+      
         public Boolean NewBookAppointment(Patient patient, Appointment appointment)
         {
             try
@@ -53,28 +72,22 @@ namespace DentalAppointment.Repository
             }
         }
 
-
-
-        public ErrorCode NewUser(UserAccount aUserAccount, ref String outMessage)
+        public Boolean NewUserAcc(UserAccount userAccount)
         {
-            ErrorCode retValue = ErrorCode.Error;
             try
             {
-                db.UserAccounts.Add(aUserAccount);
-                db.SaveChanges();
+                db.SP_NewUserAcc(userAccount.FirstName, userAccount.LastName, userAccount.Username, userAccount.Password, userAccount.RoleID, userAccount.ContactInfo);
 
-                outMessage = "Account Created";
-                retValue = ErrorCode.Success;
+
+                return true;
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                outMessage = ex.Message;
-                MessageBox.Show(ex.Message);
+                if (debug)
+                    Func.ShowResultMessageBox(e.ToString(), ErrorCode.Error);
+                return false;
             }
-            return retValue;
         }
-
-
 
         public ErrorCode UpdateUser(int? userId, UserAccount aUserAccount, ref String outMessage)
         {
@@ -113,27 +126,20 @@ namespace DentalAppointment.Repository
         }
 
 
-        public ErrorCode RemoveUser(int? userId, ref String outMessage)
+        public Boolean DeleteUserAccount(int UserId)
         {
-            ErrorCode retValue = ErrorCode.Error;
             try
             {
-                UserAccount user = db.UserAccounts.Where(m => m.UserId == userId).FirstOrDefault();
-                // Remove the user
-                db.UserAccounts.Remove(user);
-                db.SaveChanges();       // Execute the update
-
-                outMessage = "Deleted";
-                retValue = ErrorCode.Success;
+                db.SP_DeleteUser(UserId);
+                return true;
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                outMessage = ex.Message;
-                retValue = ErrorCode.Error;
-                MessageBox.Show(ex.Message);
+                if (debug)
+                    Func.ShowResultMessageBox(e.ToString(), ErrorCode.Error);
+                return false;
             }
-            return retValue;
-        }
+        }     
 
         public UserAccount GetUserByUsername(String username)
         {
@@ -153,12 +159,5 @@ namespace DentalAppointment.Repository
             RefreshDB();
             return db.VW_Appointments.ToList();
         }
-
-        /*public List<DentistAppointmentsView> AllUserRole()
-        {
-            db = new AppointmentSysEntities();
-
-            return db.DentistAppointmentsViews.ToList();
-        }*/
     }
 }

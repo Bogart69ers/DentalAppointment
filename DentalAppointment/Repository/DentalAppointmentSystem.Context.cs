@@ -151,5 +151,56 @@ namespace DentalAppointment.Repository
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_BookAppointment", firstNameParameter, lastNameParameter, contactNumberParameter, sexParameter, emailParameter, patientNameParameter, appointmentPurposeParameter, dateAndTimeParameter, statusParameter, appointmentEmailParameter);
         }
+    
+        public virtual int SP_NewUserAcc(string firstName, string lastName, string username, string password, Nullable<int> roleId, string contactInfo)
+        {
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("FirstName", firstName) :
+                new ObjectParameter("FirstName", typeof(string));
+    
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("LastName", lastName) :
+                new ObjectParameter("LastName", typeof(string));
+    
+            var usernameParameter = username != null ?
+                new ObjectParameter("Username", username) :
+                new ObjectParameter("Username", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
+    
+            var roleIdParameter = roleId.HasValue ?
+                new ObjectParameter("RoleId", roleId) :
+                new ObjectParameter("RoleId", typeof(int));
+    
+            var contactInfoParameter = contactInfo != null ?
+                new ObjectParameter("ContactInfo", contactInfo) :
+                new ObjectParameter("ContactInfo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_NewUserAcc", firstNameParameter, lastNameParameter, usernameParameter, passwordParameter, roleIdParameter, contactInfoParameter);
+        }
+    
+        public virtual int SP_DeleteUser(Nullable<int> userId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_DeleteUser", userIdParameter);
+        }
+    
+        public virtual int SP_AcceptAppointment(Nullable<int> appointmentId, string status)
+        {
+            var appointmentIdParameter = appointmentId.HasValue ?
+                new ObjectParameter("AppointmentId", appointmentId) :
+                new ObjectParameter("AppointmentId", typeof(int));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_AcceptAppointment", appointmentIdParameter, statusParameter);
+        }
     }
 }

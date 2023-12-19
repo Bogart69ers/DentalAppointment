@@ -1,5 +1,15 @@
 USE DentalAppointmentSystem
 
+INSERT INTO Roles (RoleName,[Role Discription])VALUES ('Dentist', 'Dentist'),('Admin', 'Admin')
+
+INSERT INTO UserAccount (FirstName, LastName, Username, Password, RoleID, ContactInfo) Values ('Marvin', 'Tatoy','Marvin','1111','1','09950358463')
+
+INSERT INTO Sex (SexName,SexDescription)VALUES ('Male', 'Male'),('Female', 'Female')
+
+INSERT INTO TimeSet(TimeName,TimeDescription)VALUES ('8:00 - 9:00 AM', '8:00 - 9:00 AM'),('10:00 - 11:00 AM', '10:00 - 11:00 AM'),('1:00 - 2:00 PM', '1:00 - 2:00 PM'),('3:00 - 4:00 PM', '3:00 - 4:00 PM')
+
+INSERT INTO [Services](ServiceName,ServiceDiscription)VALUES ('Tooth Extraction', 'Tooth Extraction'),('Teeth Cleaning', 'Teeth Cleaning'),('Root Canal', 'Root Canal'),('Dental Bonding', 'Dental Bonding'),('Dentures', 'Dentures'),('Orthodontics/Braces', 'Orthodontics/Braces')
+
 CREATE VIEW VW_UserAccounts as
 SELECT * FROM UserAccount
 
@@ -9,24 +19,7 @@ FROM Appointments
 JOIN Patient Pt ON Pt.PatientId = Appointments.PatientId 
 
 
-CREATE PROCEDURE SP_CreateAppointment 
-@PatientId INT,
-@PatientName NVARCHAR(200),
-@AppointmentPurpose NVARCHAR(255),
-@DateAndTime NVARCHAR(200),
-@Status NVARCHAR(100),
-@Email NVARCHAR(100),
-@FirstName varchar(255),
-@LastName varchar(255),
-@ContactNumber varchar(255),
-@Sex varchar(10)
-AS
-DECLARE @AppointmentId AS INT
-INSERT INTO Appointments VALUES (@PatientId, @PatientName, @AppointmentPurpose, @DateAndTime, @Status, @Email)
-INSERT INTO Patient VALUES (@FirstName, @LastName, @ContactNumber, @Sex, @Email)
-GO
-
-ALTER PROCEDURE SP_BookAppointment
+Create PROCEDURE SP_BookAppointment
     @FirstName VARCHAR(255),
     @LastName VARCHAR(255),
     @ContactNumber VARCHAR(255),
@@ -48,4 +41,29 @@ BEGIN
     UPDATE Appointments SET PatientId = @PatientId WHERE AppointmentId = @AppointmentId
 END
 
+CREATE PROCEDURE SP_NewUserAcc
+	@FirstName nVARCHAR(100),
+    @LastName nVARCHAR(100),
+    @Username nVARCHAR(100),
+    @Password nvarchar(255),
+    @RoleId int,
+    @ContactInfo NVARCHAR(100)
+	AS
+	DECLARE @UserId INT
+	INSERT INTO UserAccount VALUES(@FirstName, @LastName, @Username, @Password, @RoleId, @ContactInfo)
+	go
 
+
+CREATE PROCEDURE SP_DeleteUser
+	@UserId INT AS
+Delete FROM UserAccount WHERE UserId = @UserId;
+GO
+
+
+CREATE PROCEDURE SP_AcceptAppointment
+	@AppointmentId INT,
+	@Status nvarchar(100)
+	AS	
+	UPDATE Appointments SET [Status] = @Status
+	WHERE AppointmentId = @AppointmentId
+	GO 

@@ -48,6 +48,8 @@ namespace DentalAppointment
             {
                 if (userLogged.Password.Equals(tbPassword.Text))
                 {
+                    UserLogg.GetInstance().UserAccount = userLogged;
+                    
                     switch ((Roles)userLogged.RoleID)
                     {
                         case Roles.Admin:
